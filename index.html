@@ -725,12 +725,39 @@
             color: #475569;
         }
 
-        /* Clean Eyes Component */
+        /* Eyes — Clean Rebuild */
         .eyes {
             display: inline-flex;
-            gap: 10px;
-            align-items: center;
+            gap: 8px;
+            margin-left: 8px;
             vertical-align: middle;
+        }
+
+        .eye {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pupil {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: none;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .eyes { display: none !important; }
         }
 
         /* ====================================================
@@ -3258,18 +3285,9 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="form-country">Preferred Country</label>
-                                <input type="text" id="form-country" placeholder="e.g. Canada, Germany, USA">
-                            </div>
-                            <div class="form-group">
-                                <label for="form-mode">Consultation Mode</label>
-                                <select id="form-mode" style="appearance: auto; background-image: none; padding-right: 1rem;">
-                                    <option value="Online Video Call" selected>Online Video Call</option>
-                                    <option value="In-Person">In-Person (Barcelona Office)</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="form-country">Preferred Country</label>
+                            <input type="text" id="form-country" placeholder="e.g. Canada, Germany, USA">
                         </div>
 
                         <div class="form-group">
@@ -3526,6 +3544,7 @@
                 revealObserver.observe(contactForm);
             }
 
+
             // ============================================
             // Hero Globe — Mouse Parallax (KEPT AS IS)
             // ============================================
@@ -3571,6 +3590,25 @@
                 });
             }
 
+        });
+    </script>
+
+    <!-- Eye Follow Animation (standalone — runs after full DOM is ready) -->
+    <script>
+        document.querySelectorAll('.eye').length && window.addEventListener('mousemove', function(e) {
+            if (window.innerWidth < 768) return;
+            document.querySelectorAll('.eye').forEach(function(eye) {
+                var pupil = eye.querySelector('.pupil');
+                if (!pupil) return;
+                var r  = eye.getBoundingClientRect();
+                var cx = r.left + r.width  / 2;
+                var cy = r.top  + r.height / 2;
+                var angle = Math.atan2(e.clientY - cy, e.clientX - cx);
+                var x = Math.cos(angle) * 6;
+                var y = Math.sin(angle) * 6;
+                // -50% centers the pupil, then we add the px offset
+                pupil.style.transform = 'translate(calc(-50% + ' + x + 'px), calc(-50% + ' + y + 'px))';
+            });
         });
     </script>
 </body>
