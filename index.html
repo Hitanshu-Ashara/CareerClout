@@ -76,7 +76,6 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
-            cursor: none;
         }
 
         body {
@@ -85,29 +84,22 @@
             color: var(--color-text);
             overflow-x: hidden;
             line-height: 1.6;
-            cursor: none;
         }
 
         a,
         button,
         .btn {
-            cursor: none !important;
+            cursor: pointer !important;
         }
 
-        /* ====================================================
-   Custom Cursor
- ==================================================== */
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            background: #FBBF24;
-            clip-path: polygon(0 0, 100% 50%, 0 100%);
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
         /* ====================================================
@@ -227,28 +219,34 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-            }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(8deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
 
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
-
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
+        @keyframes floatSlow {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(15px, -15px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
 
         @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        /* Applying animations to decorative shapes */
+        .shape-1 { animation: float 8s ease-in-out infinite; }
+        .shape-2 { animation: floatSlow 10s ease-in-out infinite reverse; }
+        .shape-3 { animation: float 9s ease-in-out infinite 1s; }
+        .shape-4 { animation: pulse 4s ease-in-out infinite; }
+        .shape-5 { animation: spin 20s linear infinite; }
 
         /* ====================================================
    Typography 
@@ -457,78 +455,186 @@
         }
 
         /* ====================================================
-   Hero Section 
- ==================================================== */
+   Hero Section — Dynamic Geometric Redesign
+  ==================================================== */
         .hero {
             position: relative;
-            padding: 10rem 0 6rem;
-            min-height: 90vh;
+            padding: 9rem 0 5rem;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             background-color: var(--color-bg);
+            overflow: hidden;
         }
 
+        /* ---- Layer 1: Background ---- */
         .hero-bg-dots {
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px);
-            background-size: 32px 32px;
+            background-image: radial-gradient(rgba(139, 92, 246, 0.18) 1.5px, transparent 1.5px);
+            background-size: 28px 28px;
             z-index: 0;
+            pointer-events: none;
         }
 
         .hero-bg-faded-blob {
             position: absolute;
-            top: 50%;
-            left: 20%;
+            top: 40%;
+            left: 18%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.15), transparent 70%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle at 40% 50%, rgba(251, 191, 36, 0.18) 0%, rgba(139, 92, 246, 0.08) 60%, transparent 80%);
             border-radius: 50%;
             z-index: 0;
-            filter: blur(40px);
+            filter: blur(60px);
+            pointer-events: none;
         }
 
+        /* Decorative BG geometric shapes */
+        .hero-bg-shape {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-bg-ring {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            border: 3px dashed rgba(139,92,246,0.22);
+            top: 8%;
+            right: 4%;
+            animation: heroSpin 40s linear infinite;
+        }
+
+        .hero-bg-ring-2 {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px dashed rgba(244,114,182,0.25);
+            bottom: 12%;
+            left: 3%;
+            animation: heroSpin 28s linear infinite reverse;
+        }
+
+        .hero-bg-square {
+            width: 80px;
+            height: 80px;
+            background: rgba(251,191,36,0.12);
+            border: 2px solid rgba(251,191,36,0.3);
+            top: 18%;
+            left: 2%;
+            transform: rotate(15deg);
+            border-radius: var(--radius-md);
+            animation: heroFloatA 7s ease-in-out infinite alternate;
+        }
+
+        .hero-bg-dot-cluster {
+            bottom: 20%;
+            right: 2%;
+            display: grid;
+            grid-template-columns: repeat(4,10px);
+            gap: 8px;
+        }
+
+        .hero-bg-dot-cluster span {
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            opacity: 0.3;
+        }
+
+        @keyframes heroSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes heroFloatA {
+            from { transform: rotate(15deg) translateY(0); }
+            to   { transform: rotate(25deg) translateY(-16px); }
+        }
+
+        @keyframes heroFloatB {
+            from { transform: translateY(0) scale(1); }
+            to   { transform: translateY(-18px) scale(1.04); }
+        }
+
+        @keyframes heroOrbit {
+            from { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
+            to   { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+        }
+
+        @keyframes popIn {
+            0%   { opacity: 0; transform: scale(0.5) translateY(20px); }
+            70%  { transform: scale(1.08) translateY(-4px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes badgePop {
+            0%   { opacity: 0; transform: scale(0.6) translateY(24px); }
+            65%  { transform: scale(1.06) translateY(-4px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes gentleFloat {
+            0%   { transform: translateY(0px) rotate(0deg); }
+            50%  { transform: translateY(-14px) rotate(4deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes gentleFloatReverse {
+            0%   { transform: translateY(0px) rotate(0deg); }
+            50%  { transform: translateY(-12px) rotate(-3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* ---- Hero Layout Grid ---- */
         .hero-container {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
             position: relative;
             z-index: 5;
         }
 
+        /* ---- Left: Content ---- */
         .hero-content {
-            max-width: 650px;
+            max-width: 580px;
         }
 
-        /* Tagline badge */
         .tagline {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             background-color: var(--color-white);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.1rem;
             border-radius: var(--radius-pill);
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
         }
 
         .tagline-icon {
             color: var(--color-primary);
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             display: flex;
         }
 
         .hero-title-tight {
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            line-height: 1.05;
+            font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+            line-height: 1.06;
             font-weight: 800;
             margin-bottom: 1.5rem;
             color: var(--color-text);
             letter-spacing: -1.5px;
+            opacity: 0;
+            animation: popIn 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.22s both;
         }
 
         .highlight-underline {
@@ -549,12 +655,14 @@
         }
 
         .hero-subtext {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             line-height: 1.8;
-            margin-top: 1rem;
-            margin-bottom: 2.5rem;
+            margin-top: 0.75rem;
+            margin-bottom: 2rem;
             color: #334155;
-            max-width: 500px;
+            max-width: 480px;
+            opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.36s both;
         }
 
         .hero-buttons {
@@ -562,24 +670,24 @@
             gap: 1rem;
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
+            opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.48s both;
         }
 
-        /* Base Buttons */
         .btn-bounce {
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, background 0.2s ease;
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
         }
 
         .btn-bounce:hover {
-            transform: translateY(-4px) scale(1.02);
+            transform: translateY(-5px) scale(1.03);
             box-shadow: var(--shadow-hover-val);
         }
 
         .btn-outline {
-            background-color: transparent;
+            background-color: var(--color-white);
             color: var(--color-text);
             border: var(--border-width) solid var(--color-border);
             box-shadow: var(--shadow-sm);
-            background-color: var(--color-white);
         }
 
         .btn-outline:hover {
@@ -588,207 +696,33 @@
             border-color: var(--color-border);
         }
 
-        /* Trust Micro */
         .trust-micro {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.6s both;
         }
 
-        .trust-avatars {
-            display: flex;
-        }
+        .trust-avatars { display: flex; }
 
         .trust-avatars img {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             border: 2px solid var(--color-white);
-            margin-left: -12px;
+            margin-left: -11px;
             box-shadow: var(--shadow-sm);
             background-color: var(--color-bg);
         }
 
-        .trust-avatars img:first-child {
-            margin-left: 0;
-        }
+        .trust-avatars img:first-child { margin-left: 0; }
 
         .trust-text {
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 600;
             color: #475569;
-        }
-
-        /* ====================================================
-   Hero Visual Right Side
- ==================================================== */
-        .hero-visual {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .real-globe-container {
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 1/1;
-            position: relative;
-            margin: 0 auto;
-        }
-
-        .globe-earth {
-            position: absolute;
-            inset: 10%;
-            background-color: #3b82f6;
-            /* Classic ocean blue */
-            border-radius: 50%;
-            border: 4px solid var(--color-border);
-            overflow: hidden;
-            z-index: 1;
-            animation: gentleFloat 6s ease-in-out infinite alternate;
-        }
-
-        .continent {
-            position: absolute;
-            background-color: var(--color-green);
-            border: 2px solid var(--color-border);
-            border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%;
-        }
-
-        .americas {
-            width: 30%;
-            height: 60%;
-            left: 10%;
-            top: 20%;
-            border-radius: 30% 70% 70% 30% / 50% 30% 70% 50%;
-        }
-
-        .eurasia-africa {
-            width: 45%;
-            height: 70%;
-            right: 5%;
-            top: 5%;
-            border-radius: 60% 40% 30% 70% / 40% 50% 60% 50%;
-        }
-
-        .oceania {
-            width: 20%;
-            height: 20%;
-            bottom: 15%;
-            right: 15%;
-            border-radius: 50%;
-        }
-
-        .globe-icon {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: white;
-            border: 2px solid var(--color-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            z-index: 5;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .icon-plane {
-            top: 20%;
-            left: 45%;
-        }
-
-        .icon-study {
-            bottom: 30%;
-            right: 40%;
-        }
-
-        .icon-job {
-            bottom: 20%;
-            left: 30%;
-        }
-
-        .world-paths {
-            position: absolute;
-            inset: 0;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-
-        .path-anim {
-            stroke-dasharray: 8 8;
-            animation: dashPath 20s linear infinite;
-        }
-
-        .path-anim-reverse {
-            stroke-dasharray: 8 8;
-            animation: dashPath 20s linear infinite reverse;
-        }
-
-        @keyframes dashPath {
-            to {
-                stroke-dashoffset: -200;
-            }
-        }
-
-        .map-icon {
-            position: absolute;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: var(--border-width) solid var(--color-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            z-index: 4;
-        }
-
-        .map-icon-plane {
-            top: 15%;
-            left: 45%;
-            background-color: var(--color-white);
-            color: var(--color-primary);
-        }
-
-        .map-icon-job {
-            bottom: 35%;
-            left: 20%;
-            background-color: var(--color-white);
-        }
-
-        .map-icon-study {
-            bottom: 25%;
-            right: 25%;
-            background-color: var(--color-white);
-        }
-
-        .map-icon-pin {
-            top: 35%;
-            right: 15%;
-            background-color: var(--color-white);
-            color: var(--color-secondary);
-        }
-
-        .float-fast {
-            animation: gentleFloat 3s ease-in-out infinite alternate;
-        }
-
-        .float-med {
-            animation: gentleFloat 4.5s ease-in-out infinite alternate-reverse;
-        }
-
-        .float-med-reverse {
-            animation: gentleFloat 3.8s ease-in-out infinite alternate;
-        }
-
-        .float-slow {
-            animation: gentleFloat 6s ease-in-out infinite alternate;
         }
 
         /* Clean Eyes Component */
@@ -797,6 +731,312 @@
             gap: 10px;
             align-items: center;
             vertical-align: middle;
+        }
+
+        /* ====================================================
+   Hero Visual — Right Side Globe System
+  ==================================================== */
+        .hero-visual {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            animation: popIn 0.75s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;
+        }
+
+        /* Outer stage that receives mouse parallax */
+        .globe-stage {
+            position: relative;
+            width: min(480px, 100%);
+            aspect-ratio: 1/1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            will-change: transform;
+            transition: transform 0.08s linear;
+        }
+
+        /* ---- Layer 2: Globe core ---- */
+        .globe-core {
+            position: absolute;
+            inset: 14%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 45%, #60a5fa 100%);
+            border: 4px solid var(--color-border);
+            box-shadow: 6px 6px 0px var(--color-border), inset -30px -20px 60px rgba(0,0,0,0.18);
+            overflow: hidden;
+            z-index: 2;
+            animation: heroFloatB 5.5s ease-in-out infinite;
+        }
+
+        /* Latitude / Longitude grid lines */
+        .globe-grid {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent calc(20% - 1px),
+                    rgba(255,255,255,0.12) calc(20% - 1px),
+                    rgba(255,255,255,0.12) 20%
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent calc(25% - 1px),
+                    rgba(255,255,255,0.1) calc(25% - 1px),
+                    rgba(255,255,255,0.1) 25%
+                );
+        }
+
+        /* Stylized continents */
+        .continent {
+            position: absolute;
+            background-color: var(--color-green);
+            border: 2px solid rgba(0,0,0,0.3);
+        }
+
+        .continent-americas {
+            width: 26%;
+            height: 55%;
+            left: 9%;
+            top: 22%;
+            border-radius: 30% 70% 70% 30% / 50% 30% 70% 50%;
+        }
+
+        .continent-europe {
+            width: 18%;
+            height: 28%;
+            left: 44%;
+            top: 12%;
+            border-radius: 60% 40% 50% 50% / 60% 60% 40% 40%;
+            background-color: #22d3a8;
+        }
+
+        .continent-africa {
+            width: 24%;
+            height: 42%;
+            left: 45%;
+            top: 36%;
+            border-radius: 40% 50% 55% 45% / 40% 50% 55% 45%;
+            background-color: #34d399;
+        }
+
+        .continent-asia {
+            width: 38%;
+            height: 46%;
+            right: 2%;
+            top: 8%;
+            border-radius: 40% 60% 50% 50% / 40% 40% 55% 55%;
+        }
+
+        .continent-oceania {
+            width: 16%;
+            height: 16%;
+            bottom: 10%;
+            right: 12%;
+            border-radius: 50%;
+            background-color: #a7f3d0;
+        }
+
+        /* Globe shine overlay */
+        .globe-shine {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.28) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* ---- Outer decoration ring ---- */
+        .orbit-ring {
+            position: absolute;
+            inset: 4%;
+            border-radius: 50%;
+            border: 2.5px dashed rgba(139,92,246,0.35);
+            z-index: 3;
+            animation: heroSpin 20s linear infinite;
+        }
+
+        .orbit-ring-2 {
+            position: absolute;
+            inset: -4%;
+            border-radius: 50%;
+            border: 2px dashed rgba(244,114,182,0.25);
+            z-index: 1;
+            animation: heroSpin 30s linear infinite reverse;
+        }
+
+        /* ---- Orbit icon buttons ---- */
+        .orbit-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 10;
+            margin-top: -24px;
+            margin-left: -24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-border);
+            box-shadow: 3px 3px 0px var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transform-origin: center center;
+            cursor: default;
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+        }
+
+        .orbit-icon:hover {
+            transform: scale(1.25) rotate(-6deg) !important;
+            box-shadow: 5px 5px 0px var(--color-border) !important;
+            z-index: 20;
+        }
+
+        /* Each icon gets its own orbit radius + speed */
+        .orbit-icon-1 {
+            --orbit-r: 155px;
+            animation: heroOrbit 10s linear infinite;
+            background: #EDE9FE;
+            color: var(--color-primary);
+        }
+
+        .orbit-icon-2 {
+            --orbit-r: 155px;
+            animation: heroOrbit 10s linear infinite;
+            animation-delay: -2.5s;
+            background: #FCE7F3;
+            color: var(--color-secondary);
+        }
+
+        .orbit-icon-3 {
+            --orbit-r: 155px;
+            animation: heroOrbit 10s linear infinite;
+            animation-delay: -5s;
+            background: #FEF3C7;
+            color: #D97706;
+        }
+
+        .orbit-icon-4 {
+            --orbit-r: 155px;
+            animation: heroOrbit 10s linear infinite;
+            animation-delay: -7.5s;
+            background: #D1FAE5;
+            color: var(--color-green);
+        }
+
+        /* ---- Layer 3: Floating badge cards ---- */
+        .hero-badge {
+            position: absolute;
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-border);
+            box-shadow: 4px 4px 0px var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 15;
+            cursor: default;
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+        }
+
+        .hero-badge:hover {
+            transform: translate(-3px,-5px) rotate(-2deg) !important;
+            box-shadow: 7px 7px 0px var(--color-border) !important;
+        }
+
+        .hero-badge-success {
+            bottom: 10%;
+            left: -8%;
+            animation: gentleFloat 4.2s ease-in-out infinite;
+            opacity: 0;
+            animation: badgePop 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.9s both,
+                       gentleFloat 4.2s 1.6s ease-in-out infinite;
+        }
+
+        .hero-badge-global {
+            top: 10%;
+            right: -8%;
+            animation: badgePop 0.65s cubic-bezier(0.34,1.56,0.64,1) 1.05s both,
+                       gentleFloatReverse 5s 1.7s ease-in-out infinite;
+        }
+
+        .hero-badge-countries {
+            bottom: 28%;
+            right: -12%;
+            animation: badgePop 0.65s cubic-bezier(0.34,1.56,0.64,1) 1.2s both,
+                       gentleFloat 6s 1.85s ease-in-out infinite;
+        }
+
+        .badge-icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 2px solid var(--color-border);
+            flex-shrink: 0;
+        }
+
+        .badge-body strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .badge-body span {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #64748B;
+            font-family: var(--font-body);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-subtext {
+                max-width: 100%;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .trust-micro {
+                justify-content: center;
+            }
+            .globe-stage {
+                width: min(360px, 90vw);
+            }
+            .orbit-icon-1, .orbit-icon-2,
+            .orbit-icon-3, .orbit-icon-4 {
+                --orbit-r: 120px;
+            }
+            .hero-badge-success  { left: -4%; }
+            .hero-badge-global   { right: -4%; }
+            .hero-badge-countries { right: -4%; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-badge-countries { display: none; }
+            .hero-badge-success  { left: 0; bottom: 2%; }
+            .hero-badge-global   { right: 0; top: 2%; }
         }
 
         .eye {
@@ -2355,6 +2595,75 @@
 
         /* Extra small */
         @media (max-width: 400px) {
+        /* ====================================================
+   Animation for 'How It Works' Line
+ ==================================================== */
+        .process-line path {
+            stroke-dasharray: 10 10;
+            stroke-dashoffset: 100;
+            animation: drawLine 15s linear infinite;
+        }
+
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* ====================================================
+   Footer Enhancements
+ ==================================================== */
+        .footer {
+            padding-top: 6rem;
+            padding-bottom: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 4rem;
+            padding: 4rem 3rem;
+            background-color: var(--color-white);
+            border-radius: var(--radius-xl);
+            margin-bottom: 3rem;
+        }
+
+        .footer-links h4, 
+        .footer-contact h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a, 
+        .footer-contact a {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: #475569;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover, 
+        .footer-contact a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Responsive Fixes & Redesign Enhancements */
+        @media (max-width: 900px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
             }
@@ -2391,76 +2700,79 @@
    Scroll Animations
  ==================================================== */
 
-        /* Base hidden state */
-        .reveal {
+        /* ====================================================
+   Modern Scroll Animations (Premium Version)
+ ==================================================== */
+        
+        /* Base Visibility Classes */
+        .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+            will-change: transform, opacity;
+            transition-duration: 0.8s;
+            transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .reveal.reveal-left {
-            transform: translateX(-40px);
-        }
-
-        .reveal.reveal-right {
-            transform: translateX(40px);
-        }
-
-        .reveal.reveal-scale {
-            transform: translateY(20px) scale(0.95);
-        }
-
-        /* Visible state (added by JS) */
-        .reveal.visible {
+        .animate-on-scroll.is-visible {
             opacity: 1;
-            transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1) rotate(0);
         }
 
-        /* Staggered delay helpers */
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
+        /* Specific Animation Types */
+        .animate-fade-up {
+            transform: translateY(40px);
         }
 
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
+        .animate-slide-left {
+            transform: translateX(-60px);
         }
 
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
+        .animate-slide-right {
+            transform: translateX(60px);
         }
 
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
+        .animate-scale-in {
+            transform: scale(0.9);
         }
 
-        .reveal-delay-5 {
-            transition-delay: 0.5s;
+        .animate-bounce-in {
+            transform: scale(0.6) translateY(30px);
         }
 
-        /* Reduce motion for mobile */
-        @media (max-width: 768px) {
-            .reveal {
-                transform: translateY(20px);
+        /* Accessibility: Respect Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-on-scroll {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
             }
+        }
 
-            .reveal.reveal-left,
-            .reveal.reveal-right {
-                transform: translateY(20px);
-            }
+        /* Card Hover Micro-interactions */
+        .service-hover {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.4s ease;
+        }
 
-            .reveal.reveal-scale {
-                transform: translateY(15px);
-            }
+        .service-hover:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: var(--shadow-hover-val) !important;
+        }
+
+        /* Button Hover Micro-interactions */
+        .btn-bounce {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.3s ease;
+        }
+
+        .btn-bounce:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: var(--shadow-hover-val);
         }
     </style>
 
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-
-<body>
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
 
     <!-- Playful Background Pattern -->
     <div class="bg-pattern"></div>
@@ -2505,10 +2817,20 @@
     <main>
         <!-- Hero Section -->
         <section class="hero" id="home">
-            <div class="hero-bg-faded-blob"></div>
+            <!-- Layer 1: Background -->
             <div class="hero-bg-dots"></div>
+            <div class="hero-bg-faded-blob"></div>
+            <div class="hero-bg-shape hero-bg-ring"></div>
+            <div class="hero-bg-shape hero-bg-ring-2"></div>
+            <div class="hero-bg-shape hero-bg-square"></div>
+            <div class="hero-bg-shape hero-bg-dot-cluster">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+
             <div class="container hero-container">
-                <!-- Left Content -->
+                <!-- Left: Headline + CTA -->
                 <div class="hero-content">
                     <div class="tagline box-shadow">
                         <span class="tagline-icon"><i class="ph-fill ph-globe-hemisphere-west"></i></span>
@@ -2518,83 +2840,104 @@
                     <h1 class="hero-title-tight">
                         Build Your Global Career
                         <div class="eyes">
-                            <div class="eye">
-                                <div class="pupil"></div>
-                            </div>
-                            <div class="eye">
-                                <div class="pupil"></div>
-                            </div>
+                            <div class="eye"><div class="pupil"></div></div>
+                            <div class="eye"><div class="pupil"></div></div>
                         </div>
                         <br /><span class="highlight-underline text-primary">Without Limits</span>
                     </h1>
 
-                    <p class="hero-subtext">Expert guidance for visas, careers, and global opportunities &mdash; all in
-                        one place.</p>
+                    <p class="hero-subtext">
+                        Expert guidance for visas, careers, and global opportunities &mdash;
+                        all in one place.
+                    </p>
 
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary btn-large btn-pill btn-bounce">
+                        <a href="#contact" id="hero-cta-primary" class="btn btn-primary btn-large btn-pill btn-bounce box-shadow">
                             Book Consultation <i class="ph-bold ph-arrow-right"></i>
                         </a>
-                        <a href="#services" class="btn btn-outline btn-large btn-pill btn-bounce">
-                            Explore Services
+                        <a href="#services" id="hero-cta-secondary" class="btn btn-outline btn-large btn-pill btn-bounce">
+                            Explore Services <i class="ph-bold ph-arrow-down"></i>
                         </a>
                     </div>
 
                     <div class="trust-micro">
                         <div class="trust-avatars">
-                            <img src="https://i.pravatar.cc/100?img=1" alt="User 1">
-                            <img src="https://i.pravatar.cc/100?img=2" alt="User 2">
-                            <img src="https://i.pravatar.cc/100?img=3" alt="User 3">
+                            <img src="https://i.pravatar.cc/100?img=1" alt="Happy client 1" loading="lazy">
+                            <img src="https://i.pravatar.cc/100?img=2" alt="Happy client 2" loading="lazy">
+                            <img src="https://i.pravatar.cc/100?img=3" alt="Happy client 3" loading="lazy">
+                            <img src="https://i.pravatar.cc/100?img=4" alt="Happy client 4" loading="lazy">
                         </div>
                         <span class="trust-text">Trusted by 2,000+ clients globally</span>
                     </div>
                 </div>
 
-                <!-- Right Visual -->
+                <!-- Right: Animated Globe System -->
                 <div class="hero-visual">
-                    <div class="visual-container real-globe-container">
-                        <!-- Playful Earth Globe -->
-                        <div class="globe-earth box-shadow">
-                            <!-- Recognizable but playful continents -->
-                            <div class="continent americas"></div>
-                            <div class="continent eurasia-africa"></div>
-                            <div class="continent oceania"></div>
+                    <!-- Globe stage receives mouse parallax -->
+                    <div class="globe-stage" id="globeStage">
 
-                            <!-- Travel Paths -->
-                            <svg class="world-paths" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                <path d="M 20 40 Q 50 10, 80 50" stroke="var(--color-primary)" fill="transparent"
-                                    stroke-width="2" stroke-dasharray="4 4" class="path-anim" />
-                                <path d="M 30 70 Q 50 90, 70 60" stroke="var(--color-secondary)" fill="transparent"
-                                    stroke-width="2" stroke-dasharray="4 4" class="path-anim-reverse" />
-                            </svg>
+                        <!-- Outer decoration rings -->
+                        <div class="orbit-ring-2"></div>
 
-                            <!-- Icons on globe -->
-                            <div class="globe-icon icon-plane float-fast"><i class="ph-bold ph-airplane-in-flight"></i>
-                            </div>
-                            <div class="globe-icon icon-study float-med"><i class="ph-bold ph-graduation-cap"></i></div>
-                            <div class="globe-icon icon-job float-slow"><i class="ph-bold ph-briefcase"></i></div>
+                        <!-- Orbiting icon buttons (Layer 3 foreground) -->
+                        <div class="orbit-icon orbit-icon-1"  title="Study Abroad">
+                            <i class="ph-bold ph-graduation-cap"></i>
+                        </div>
+                        <div class="orbit-icon orbit-icon-2" title="Work Permits">
+                            <i class="ph-bold ph-briefcase"></i>
+                        </div>
+                        <div class="orbit-icon orbit-icon-3" title="Travel Visas">
+                            <i class="ph-bold ph-airplane-in-flight"></i>
+                        </div>
+                        <div class="orbit-icon orbit-icon-4" title="Relocate">
+                            <i class="ph-bold ph-map-pin"></i>
                         </div>
 
-                        <!-- Floating Micro Elements -->
-                        <div class="map-icon map-icon-pin box-shadow float-med-reverse"><i
-                                class="ph-bold ph-map-pin"></i></div>
+                        <!-- Inner dashed orbit ring -->
+                        <div class="orbit-ring"></div>
 
-                        <!-- Floating playful badges -->
-                        <div class="floating-badge badge-1 box-shadow">
-                            <div class="badge-icon bg-accent box-shadow-sm"><i class="ph-bold ph-check"></i></div>
-                            <div class="badge-text">
+                        <!-- Layer 2: Globe Core -->
+                        <div class="globe-core">
+                            <div class="globe-grid"></div>
+                            <div class="continent continent-americas"></div>
+                            <div class="continent continent-europe"></div>
+                            <div class="continent continent-africa"></div>
+                            <div class="continent continent-asia"></div>
+                            <div class="continent continent-oceania"></div>
+                            <div class="globe-shine"></div>
+                        </div>
+
+                        <!-- Layer 3: Floating badge cards -->
+                        <div class="hero-badge hero-badge-success" id="hero-badge-1">
+                            <div class="badge-icon-wrap" style="background:#FEF3C7;">
+                                <i class="ph-bold ph-seal-check" style="color:#D97706;"></i>
+                            </div>
+                            <div class="badge-body">
                                 <strong>98%</strong>
                                 <span>Success Rate</span>
                             </div>
                         </div>
-                        <div class="floating-badge badge-2 box-shadow">
-                            <div class="badge-icon bg-green box-shadow-sm"><i class="ph-bold ph-rocket-launch"></i>
+
+                        <div class="hero-badge hero-badge-global" id="hero-badge-2">
+                            <div class="badge-icon-wrap" style="background:#D1FAE5;">
+                                <i class="ph-bold ph-rocket-launch" style="color:#059669;"></i>
                             </div>
-                            <div class="badge-text">
-                                <strong>Global</strong>
-                                <span>Reach</span>
+                            <div class="badge-body">
+                                <strong>Global Reach</strong>
+                                <span>50+ Countries</span>
                             </div>
                         </div>
+
+                        <div class="hero-badge hero-badge-countries" id="hero-badge-3">
+                            <div class="badge-icon-wrap" style="background:#EDE9FE;">
+                                <i class="ph-bold ph-users-three" style="color:#7C3AED;"></i>
+                            </div>
+                            <div class="badge-body">
+                                <strong>2,000+</strong>
+                                <span>Clients Helped</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -2778,10 +3121,6 @@
                             <span>Success</span>
                         </div>
                     </div>
-
-                    <a href="#about" class="btn btn-secondary btn-large btn-pill btn-bounce mt-4 box-shadow">
-                        Learn More About Us <i class="ph-bold ph-magnifying-glass"></i>
-                    </a>
                 </div>
             </div>
             <div class="shape shape-triangle about-shape-2"></div>
@@ -2886,7 +3225,7 @@
                     </div>
                 </div>
 
-                <!-- Form -->
+                <!-- Form Content -->
                 <div class="contact-form-wrapper">
                     <div class="contact-form-backdrop"></div>
                     <form class="contact-form box-shadow">
@@ -2908,7 +3247,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="form-service">Service Type</label>
-                                <select id="form-service">
+                                <select id="form-service" style="appearance: auto; background-image: none; padding-right: 1rem;">
                                     <option value="" disabled selected>Select an option</option>
                                     <option value="Student Visa">Student Visa</option>
                                     <option value="Work Visa">Work Permit & Employment</option>
@@ -2926,9 +3265,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="form-mode">Consultation Mode</label>
-                                <select id="form-mode">
-                                    <option value="Online" selected>Online Video Call</option>
-                                    <option value="Offline">In-Person (Barcelona Office)</option>
+                                <select id="form-mode" style="appearance: auto; background-image: none; padding-right: 1rem;">
+                                    <option value="Online Video Call" selected>Online Video Call</option>
+                                    <option value="In-Person">In-Person (Barcelona Office)</option>
                                 </select>
                             </div>
                         </div>
@@ -2941,8 +3280,7 @@
                         <button type="submit"
                             class="btn btn-primary btn-xl btn-pill w-100 box-shadow btn-bounce mt-3">Book My
                             Consultation</button>
-                        <p class="form-footer-text text-center"><i class="ph-bold ph-clock"></i> We’ll contact you
-                            within 24 hours.</p>
+                        <p class="form-footer-text text-center"><i class="ph-bold ph-clock"></i> We'll contact you within 24 hours.</p>
                     </form>
                 </div>
             </div>
@@ -3007,6 +3345,11 @@
             const cursor = document.querySelector('.custom-cursor');
 
             document.addEventListener('mousemove', (e) => {
+                // Show cursor on first movement
+                if (cursor.style.display !== 'block') {
+                    cursor.style.display = 'block';
+                }
+                
                 // Smoothly move the custom cursor
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
@@ -3114,73 +3457,119 @@
             }
 
             // ============================================
-            // Scroll Animations via Intersection Observer
+            // Scroll Animations (Premium Observer)
             // ============================================
 
-            // 1. Mark elements with reveal classes
-            const animateTargets = [
-                // Hero
-                { sel: '.tagline', cls: 'reveal' },
-                { sel: '.hero-title-tight', cls: 'reveal' },
-                { sel: '.hero-subtext', cls: 'reveal reveal-delay-1' },
-                { sel: '.hero-buttons', cls: 'reveal reveal-scale reveal-delay-2' },
-                { sel: '.trust-micro', cls: 'reveal reveal-delay-3' },
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-                // Section headers
-                { sel: '.section-header', cls: 'reveal' },
-
-                // Services cards — staggered
-                { sel: '.service-card:nth-child(1)', cls: 'reveal reveal-delay-1' },
-                { sel: '.service-card:nth-child(2)', cls: 'reveal reveal-delay-2' },
-                { sel: '.service-card:nth-child(3)', cls: 'reveal reveal-delay-3' },
-                { sel: '.service-card:nth-child(4)', cls: 'reveal reveal-delay-1' },
-                { sel: '.service-card:nth-child(5)', cls: 'reveal reveal-delay-2' },
-                { sel: '.service-card:nth-child(6)', cls: 'reveal reveal-delay-3' },
-
-                // Why Us — alternate left/right
-                { sel: '.why-row:nth-child(odd) .why-icon-box', cls: 'reveal reveal-left' },
-                { sel: '.why-row:nth-child(odd) .why-text-box', cls: 'reveal reveal-right reveal-delay-1' },
-                { sel: '.why-row:nth-child(even) .why-icon-box', cls: 'reveal reveal-right' },
-                { sel: '.why-row:nth-child(even) .why-text-box', cls: 'reveal reveal-left reveal-delay-1' },
-
-                // About
-                { sel: '.about-visual', cls: 'reveal reveal-left' },
-                { sel: '.about-content', cls: 'reveal reveal-right reveal-delay-1' },
-
-                // Process steps — staggered
-                { sel: '.process-step:nth-child(2)', cls: 'reveal reveal-delay-1' },
-                { sel: '.process-step:nth-child(3)', cls: 'reveal reveal-delay-2' },
-                { sel: '.process-step:nth-child(4)', cls: 'reveal reveal-delay-3' },
-                { sel: '.process-step:nth-child(5)', cls: 'reveal reveal-delay-4' },
-
-                // CTA
-                { sel: '.cta-wrapper', cls: 'reveal reveal-scale' },
-
-                // Contact
-                { sel: '.contact-info', cls: 'reveal reveal-left' },
-                { sel: '.contact-form-wrapper', cls: 'reveal reveal-right reveal-delay-2' },
-
-                // Footer
-                { sel: '.footer-container', cls: 'reveal' },
-            ];
-
-            animateTargets.forEach(({ sel, cls }) => {
-                document.querySelectorAll(sel).forEach(el => {
-                    cls.split(' ').forEach(c => el.classList.add(c));
-                });
-            });
-
-            // 2. Observer to add 'visible' once in view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // fire once only
+                        entry.target.classList.add('is-visible');
                     }
                 });
-            }, { threshold: 0.12 });
+            }, observerOptions);
 
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            // Apply to Services cards
+            document.querySelectorAll('.service-card').forEach((el, index) => {
+                el.classList.add('animate-on-scroll', 'animate-fade-up');
+                el.style.transitionDelay = `${(index % 3) * 150}ms`;
+                revealObserver.observe(el);
+            });
+
+            // Why Choose Us rows
+            document.querySelectorAll('.why-row').forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+                el.classList.add(index % 2 === 0 ? 'animate-slide-left' : 'animate-slide-right');
+                revealObserver.observe(el);
+            });
+
+            // About Section elements
+            const aboutVisual = document.querySelector('.about-visual');
+            const aboutContent = document.querySelector('.about-content');
+            if(aboutVisual) {
+                aboutVisual.classList.add('animate-on-scroll', 'animate-slide-left');
+                revealObserver.observe(aboutVisual);
+            }
+            if(aboutContent) {
+                aboutContent.classList.add('animate-on-scroll', 'animate-slide-right');
+                revealObserver.observe(aboutContent);
+            }
+
+            // Process steps staggered
+            document.querySelectorAll('.process-step').forEach((el, index) => {
+                el.classList.add('animate-on-scroll', 'animate-scale-in');
+                el.style.transitionDelay = `${index * 150}ms`;
+                revealObserver.observe(el);
+            });
+
+            // CTA wrapper
+            const ctaWrapper = document.querySelector('.cta-wrapper');
+            if(ctaWrapper) {
+                ctaWrapper.classList.add('animate-on-scroll', 'animate-bounce-in');
+                revealObserver.observe(ctaWrapper);
+            }
+
+            // Contact section
+            const contactInfo = document.querySelector('.contact-info');
+            const contactForm = document.querySelector('.contact-form-wrapper');
+            if(contactInfo) {
+                contactInfo.classList.add('animate-on-scroll', 'animate-fade-up');
+                revealObserver.observe(contactInfo);
+            }
+            if(contactForm) {
+                contactForm.classList.add('animate-on-scroll', 'animate-fade-up');
+                contactForm.style.transitionDelay = '200ms';
+                revealObserver.observe(contactForm);
+            }
+
+            // ============================================
+            // Hero Globe — Mouse Parallax (KEPT AS IS)
+            // ============================================
+            const globeStage = document.getElementById('globeStage');
+            if (globeStage) {
+                let targetX = 0, targetY = 0;
+                let currentX = 0, currentY = 0;
+                const STRENGTH = 14; // max pixel shift
+
+                document.addEventListener('mousemove', (e) => {
+                    const cx = window.innerWidth  / 2;
+                    const cy = window.innerHeight / 2;
+                    targetX = ((e.clientX - cx) / cx) * STRENGTH;
+                    targetY = ((e.clientY - cy) / cy) * STRENGTH;
+                });
+
+                (function animateParallax() {
+                    currentX += (targetX - currentX) * 0.08;
+                    currentY += (targetY - currentY) * 0.08;
+                    globeStage.style.transform =
+                        `translate(${currentX}px, ${currentY}px)`;
+                    requestAnimationFrame(animateParallax);
+                })();
+
+                // Hover bounce on orbit icons
+                document.querySelectorAll('.orbit-icon').forEach(icon => {
+                    icon.addEventListener('mouseenter', () => {
+                        icon.style.animationPlayState = 'paused';
+                    });
+                    icon.addEventListener('mouseleave', () => {
+                        icon.style.animationPlayState = 'running';
+                    });
+                });
+
+                // Bounce on badge hover
+                document.querySelectorAll('.hero-badge').forEach(badge => {
+                    badge.addEventListener('mouseenter', () => {
+                        badge.style.animationPlayState = 'paused';
+                    });
+                    badge.addEventListener('mouseleave', () => {
+                        badge.style.animationPlayState = 'running';
+                    });
+                });
+            }
 
         });
     </script>
