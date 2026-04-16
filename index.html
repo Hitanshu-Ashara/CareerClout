@@ -96,7 +96,7 @@
         ::-webkit-scrollbar {
             display: none;
         }
-        
+
         html {
             scrollbar-width: none;
             -ms-overflow-style: none;
@@ -219,34 +219,80 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(8deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(8deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
         }
 
         @keyframes floatSlow {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(15px, -15px) rotate(-5deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(15px, -15px) rotate(-5deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
 
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
         }
 
         /* Applying animations to decorative shapes */
-        .shape-1 { animation: float 8s ease-in-out infinite; }
-        .shape-2 { animation: floatSlow 10s ease-in-out infinite reverse; }
-        .shape-3 { animation: float 9s ease-in-out infinite 1s; }
-        .shape-4 { animation: pulse 4s ease-in-out infinite; }
-        .shape-5 { animation: spin 20s linear infinite; }
+        .shape-1 {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            animation: floatSlow 10s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            animation: float 9s ease-in-out infinite 1s;
+        }
+
+        .shape-4 {
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .shape-5 {
+            animation: spin 20s linear infinite;
+        }
 
         /* ====================================================
    Typography 
@@ -384,13 +430,27 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.9rem;
             font-weight: 800;
             color: var(--color-text);
             text-transform: uppercase;
             letter-spacing: -0.5px;
             position: relative;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: auto;
+            flex-shrink: 0;
+            color: var(--color-text);
+        }
+
+        .logo-icon path {
+            stroke: currentColor;
         }
 
         .nav-links {
@@ -502,7 +562,7 @@
             width: 260px;
             height: 260px;
             border-radius: 50%;
-            border: 3px dashed rgba(139,92,246,0.22);
+            border: 3px dashed rgba(139, 92, 246, 0.22);
             top: 8%;
             right: 4%;
             animation: heroSpin 40s linear infinite;
@@ -512,7 +572,7 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            border: 3px dashed rgba(244,114,182,0.25);
+            border: 3px dashed rgba(244, 114, 182, 0.25);
             bottom: 12%;
             left: 3%;
             animation: heroSpin 28s linear infinite reverse;
@@ -521,8 +581,8 @@
         .hero-bg-square {
             width: 80px;
             height: 80px;
-            background: rgba(251,191,36,0.12);
-            border: 2px solid rgba(251,191,36,0.3);
+            background: rgba(251, 191, 36, 0.12);
+            border: 2px solid rgba(251, 191, 36, 0.3);
             top: 18%;
             left: 2%;
             transform: rotate(15deg);
@@ -534,7 +594,7 @@
             bottom: 20%;
             right: 2%;
             display: grid;
-            grid-template-columns: repeat(4,10px);
+            grid-template-columns: repeat(4, 10px);
             gap: 8px;
         }
 
@@ -548,46 +608,99 @@
         }
 
         @keyframes heroSpin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes heroFloatA {
-            from { transform: rotate(15deg) translateY(0); }
-            to   { transform: rotate(25deg) translateY(-16px); }
+            from {
+                transform: rotate(15deg) translateY(0);
+            }
+
+            to {
+                transform: rotate(25deg) translateY(-16px);
+            }
         }
 
         @keyframes heroFloatB {
-            from { transform: translateY(0) scale(1); }
-            to   { transform: translateY(-18px) scale(1.04); }
+            from {
+                transform: translateY(0) scale(1);
+            }
+
+            to {
+                transform: translateY(-18px) scale(1.04);
+            }
         }
 
         @keyframes heroOrbit {
-            from { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
-            to   { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+            from {
+                transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg);
+            }
         }
 
         @keyframes popIn {
-            0%   { opacity: 0; transform: scale(0.5) translateY(20px); }
-            70%  { transform: scale(1.08) translateY(-4px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(20px);
+            }
+
+            70% {
+                transform: scale(1.08) translateY(-4px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         @keyframes badgePop {
-            0%   { opacity: 0; transform: scale(0.6) translateY(24px); }
-            65%  { transform: scale(1.06) translateY(-4px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+            0% {
+                opacity: 0;
+                transform: scale(0.6) translateY(24px);
+            }
+
+            65% {
+                transform: scale(1.06) translateY(-4px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         @keyframes gentleFloat {
-            0%   { transform: translateY(0px) rotate(0deg); }
-            50%  { transform: translateY(-14px) rotate(4deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-14px) rotate(4deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
         }
 
         @keyframes gentleFloatReverse {
-            0%   { transform: translateY(0px) rotate(0deg); }
-            50%  { transform: translateY(-12px) rotate(-3deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(-3deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
         }
 
         /* ---- Hero Layout Grid ---- */
@@ -617,7 +730,7 @@
             font-size: 0.85rem;
             margin-bottom: 1.5rem;
             opacity: 0;
-            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
         }
 
         .tagline-icon {
@@ -634,7 +747,7 @@
             color: var(--color-text);
             letter-spacing: -1.5px;
             opacity: 0;
-            animation: popIn 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.22s both;
+            animation: popIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.22s both;
         }
 
         .highlight-underline {
@@ -662,7 +775,7 @@
             color: #334155;
             max-width: 480px;
             opacity: 0;
-            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.36s both;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.36s both;
         }
 
         .hero-buttons {
@@ -671,11 +784,11 @@
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
             opacity: 0;
-            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.48s both;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.48s both;
         }
 
         .btn-bounce {
-            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
         }
 
         .btn-bounce:hover {
@@ -702,10 +815,12 @@
             gap: 1rem;
             margin-top: 1.5rem;
             opacity: 0;
-            animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.6s both;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
         }
 
-        .trust-avatars { display: flex; }
+        .trust-avatars {
+            display: flex;
+        }
 
         .trust-avatars img {
             width: 38px;
@@ -717,7 +832,9 @@
             background-color: var(--color-bg);
         }
 
-        .trust-avatars img:first-child { margin-left: 0; }
+        .trust-avatars img:first-child {
+            margin-left: 0;
+        }
 
         .trust-text {
             font-size: 0.875rem;
@@ -757,7 +874,9 @@
         }
 
         @media (max-width: 768px) {
-            .eyes { display: none !important; }
+            .eyes {
+                display: none !important;
+            }
         }
 
         /* ====================================================
@@ -770,7 +889,7 @@
             justify-content: center;
             align-items: center;
             opacity: 0;
-            animation: popIn 0.75s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;
+            animation: popIn 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
         }
 
         /* Outer stage that receives mouse parallax */
@@ -792,7 +911,7 @@
             border-radius: 50%;
             background: linear-gradient(135deg, #2563eb 0%, #3b82f6 45%, #60a5fa 100%);
             border: 4px solid var(--color-border);
-            box-shadow: 6px 6px 0px var(--color-border), inset -30px -20px 60px rgba(0,0,0,0.18);
+            box-shadow: 6px 6px 0px var(--color-border), inset -30px -20px 60px rgba(0, 0, 0, 0.18);
             overflow: hidden;
             z-index: 2;
             animation: heroFloatB 5.5s ease-in-out infinite;
@@ -804,27 +923,23 @@
             inset: 0;
             border-radius: 50%;
             background:
-                repeating-linear-gradient(
-                    0deg,
+                repeating-linear-gradient(0deg,
                     transparent,
                     transparent calc(20% - 1px),
-                    rgba(255,255,255,0.12) calc(20% - 1px),
-                    rgba(255,255,255,0.12) 20%
-                ),
-                repeating-linear-gradient(
-                    90deg,
+                    rgba(255, 255, 255, 0.12) calc(20% - 1px),
+                    rgba(255, 255, 255, 0.12) 20%),
+                repeating-linear-gradient(90deg,
                     transparent,
                     transparent calc(25% - 1px),
-                    rgba(255,255,255,0.1) calc(25% - 1px),
-                    rgba(255,255,255,0.1) 25%
-                );
+                    rgba(255, 255, 255, 0.1) calc(25% - 1px),
+                    rgba(255, 255, 255, 0.1) 25%);
         }
 
         /* Stylized continents */
         .continent {
             position: absolute;
             background-color: var(--color-green);
-            border: 2px solid rgba(0,0,0,0.3);
+            border: 2px solid rgba(0, 0, 0, 0.3);
         }
 
         .continent-americas {
@@ -875,7 +990,7 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            background: radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.28) 0%, transparent 60%);
+            background: radial-gradient(ellipse at 30% 25%, rgba(255, 255, 255, 0.28) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -884,7 +999,7 @@
             position: absolute;
             inset: 4%;
             border-radius: 50%;
-            border: 2.5px dashed rgba(139,92,246,0.35);
+            border: 2.5px dashed rgba(139, 92, 246, 0.35);
             z-index: 3;
             animation: heroSpin 20s linear infinite;
         }
@@ -893,7 +1008,7 @@
             position: absolute;
             inset: -4%;
             border-radius: 50%;
-            border: 2px dashed rgba(244,114,182,0.25);
+            border: 2px dashed rgba(244, 114, 182, 0.25);
             z-index: 1;
             animation: heroSpin 30s linear infinite reverse;
         }
@@ -918,7 +1033,7 @@
             font-size: 1.3rem;
             transform-origin: center center;
             cursor: default;
-            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
         }
 
         .orbit-icon:hover {
@@ -972,11 +1087,11 @@
             gap: 0.75rem;
             z-index: 15;
             cursor: default;
-            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
         }
 
         .hero-badge:hover {
-            transform: translate(-3px,-5px) rotate(-2deg) !important;
+            transform: translate(-3px, -5px) rotate(-2deg) !important;
             box-shadow: 7px 7px 0px var(--color-border) !important;
         }
 
@@ -985,22 +1100,22 @@
             left: -8%;
             animation: gentleFloat 4.2s ease-in-out infinite;
             opacity: 0;
-            animation: badgePop 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.9s both,
-                       gentleFloat 4.2s 1.6s ease-in-out infinite;
+            animation: badgePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s both,
+                gentleFloat 4.2s 1.6s ease-in-out infinite;
         }
 
         .hero-badge-global {
             top: 10%;
             right: -8%;
-            animation: badgePop 0.65s cubic-bezier(0.34,1.56,0.64,1) 1.05s both,
-                       gentleFloatReverse 5s 1.7s ease-in-out infinite;
+            animation: badgePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 1.05s both,
+                gentleFloatReverse 5s 1.7s ease-in-out infinite;
         }
 
         .hero-badge-countries {
             bottom: 28%;
             right: -12%;
-            animation: badgePop 0.65s cubic-bezier(0.34,1.56,0.64,1) 1.2s both,
-                       gentleFloat 6s 1.85s ease-in-out infinite;
+            animation: badgePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s both,
+                gentleFloat 6s 1.85s ease-in-out infinite;
         }
 
         .badge-icon-wrap {
@@ -1036,34 +1151,61 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
             .hero-content {
                 max-width: 100%;
             }
+
             .hero-subtext {
                 max-width: 100%;
             }
+
             .hero-buttons {
                 justify-content: center;
             }
+
             .trust-micro {
                 justify-content: center;
             }
+
             .globe-stage {
                 width: min(360px, 90vw);
             }
-            .orbit-icon-1, .orbit-icon-2,
-            .orbit-icon-3, .orbit-icon-4 {
+
+            .orbit-icon-1,
+            .orbit-icon-2,
+            .orbit-icon-3,
+            .orbit-icon-4 {
                 --orbit-r: 120px;
             }
-            .hero-badge-success  { left: -4%; }
-            .hero-badge-global   { right: -4%; }
-            .hero-badge-countries { right: -4%; }
+
+            .hero-badge-success {
+                left: -4%;
+            }
+
+            .hero-badge-global {
+                right: -4%;
+            }
+
+            .hero-badge-countries {
+                right: -4%;
+            }
         }
 
         @media (max-width: 600px) {
-            .hero-badge-countries { display: none; }
-            .hero-badge-success  { left: 0; bottom: 2%; }
-            .hero-badge-global   { right: 0; top: 2%; }
+            .hero-badge-countries {
+                display: none;
+            }
+
+            .hero-badge-success {
+                left: 0;
+                bottom: 2%;
+            }
+
+            .hero-badge-global {
+                right: 0;
+                top: 2%;
+            }
         }
 
         .eye {
@@ -2622,995 +2764,1034 @@
 
         /* Extra small */
         @media (max-width: 400px) {
-        /* ====================================================
+
+            /* ====================================================
    Animation for 'How It Works' Line
  ==================================================== */
-        .process-line path {
-            stroke-dasharray: 10 10;
-            stroke-dashoffset: 100;
-            animation: drawLine 15s linear infinite;
-        }
-
-        @keyframes drawLine {
-            to {
-                stroke-dashoffset: 0;
+            .process-line path {
+                stroke-dasharray: 10 10;
+                stroke-dashoffset: 100;
+                animation: drawLine 15s linear infinite;
             }
-        }
 
-        /* ====================================================
+            @keyframes drawLine {
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
+
+            /* ====================================================
    Footer Enhancements
  ==================================================== */
-        .footer {
-            padding-top: 6rem;
-            padding-bottom: 2rem;
-            margin-top: 4rem;
-        }
+            .footer {
+                padding-top: 6rem;
+                padding-bottom: 2rem;
+                margin-top: 4rem;
+            }
 
-        .footer-container {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-            gap: 4rem;
-            padding: 4rem 3rem;
-            background-color: var(--color-white);
-            border-radius: var(--radius-xl);
-            margin-bottom: 3rem;
-        }
-
-        .footer-links h4, 
-        .footer-contact h4 {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .footer-links a, 
-        .footer-contact a {
-            display: block;
-            margin-bottom: 0.75rem;
-            color: #475569;
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover, 
-        .footer-contact a:hover {
-            color: var(--color-primary);
-        }
-
-        /* Responsive Fixes & Redesign Enhancements */
-        @media (max-width: 900px) {
             .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 2.5rem;
-                padding: 3rem 2rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
+                display: grid;
+                grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+                gap: 4rem;
+                padding: 4rem 3rem;
+                background-color: var(--color-white);
+                border-radius: var(--radius-xl);
+                margin-bottom: 3rem;
             }
 
-            .hero-title-tight {
-                font-size: 1.9rem;
+            .footer-links h4,
+            .footer-contact h4 {
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
             }
 
-            .real-globe-container {
-                max-width: 240px;
+            .footer-links a,
+            .footer-contact a {
+                display: block;
+                margin-bottom: 0.75rem;
+                color: #475569;
+                transition: color 0.2s ease;
             }
 
-            .tagline {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.75rem;
+            .footer-links a:hover,
+            .footer-contact a:hover {
+                color: var(--color-primary);
             }
-        }
 
-        /* Scroll Behavior */
-        html {
-            scroll-behavior: smooth;
-        }
+            /* Responsive Fixes & Redesign Enhancements */
+            @media (max-width: 900px) {
+                .footer-container {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2.5rem;
+                    padding: 3rem 2rem;
+                }
+            }
 
-        /* Ensure global cursor none and custom visibility */
-        * {
-            cursor: none !important;
-        }
+            @media (max-width: 600px) {
+                .footer-container {
+                    grid-template-columns: 1fr;
+                }
+            }
 
-        .custom-cursor {
-            display: block !important;
-        }
+            @media (max-width: 768px) {
+                .container {
+                    padding: 0 1rem;
+                }
 
-        /* ====================================================
+                .hero-title-tight {
+                    font-size: 1.9rem;
+                }
+
+                .real-globe-container {
+                    max-width: 240px;
+                }
+
+                .tagline {
+                    font-size: 0.75rem;
+                    padding: 0.4rem 0.75rem;
+                }
+            }
+
+            /* Scroll Behavior */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Ensure global cursor none and custom visibility */
+            * {
+                cursor: none !important;
+            }
+
+            .custom-cursor {
+                display: block !important;
+            }
+
+            /* ====================================================
    Scroll Animations
  ==================================================== */
 
-        /* ====================================================
+            /* ====================================================
    Modern Scroll Animations (Premium Version)
  ==================================================== */
-        
-        /* Base Visibility Classes */
-        .animate-on-scroll {
-            opacity: 0;
-            will-change: transform, opacity;
-            transition-duration: 0.8s;
-            transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
 
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translate(0, 0) scale(1) rotate(0);
-        }
-
-        /* Specific Animation Types */
-        .animate-fade-up {
-            transform: translateY(40px);
-        }
-
-        .animate-slide-left {
-            transform: translateX(-60px);
-        }
-
-        .animate-slide-right {
-            transform: translateX(60px);
-        }
-
-        .animate-scale-in {
-            transform: scale(0.9);
-        }
-
-        .animate-bounce-in {
-            transform: scale(0.6) translateY(30px);
-        }
-
-        /* Accessibility: Respect Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
+            /* Base Visibility Classes */
             .animate-on-scroll {
-                transition: none !important;
-                opacity: 1 !important;
-                transform: none !important;
+                opacity: 0;
+                will-change: transform, opacity;
+                transition-duration: 0.8s;
+                transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
             }
-        }
 
-        /* Card Hover Micro-interactions */
-        .service-hover {
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        box-shadow 0.4s ease;
-        }
+            .animate-on-scroll.is-visible {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0);
+            }
 
-        .service-hover:hover {
-            transform: translateY(-8px) scale(1.02) !important;
-            box-shadow: var(--shadow-hover-val) !important;
-        }
+            /* Specific Animation Types */
+            .animate-fade-up {
+                transform: translateY(40px);
+            }
 
-        /* Button Hover Micro-interactions */
-        .btn-bounce {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        box-shadow 0.3s ease;
-        }
+            .animate-slide-left {
+                transform: translateX(-60px);
+            }
 
-        .btn-bounce:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: var(--shadow-hover-val);
-        }
+            .animate-slide-right {
+                transform: translateX(60px);
+            }
+
+            .animate-scale-in {
+                transform: scale(0.9);
+            }
+
+            .animate-bounce-in {
+                transform: scale(0.6) translateY(30px);
+            }
+
+            /* Accessibility: Respect Reduced Motion */
+            @media (prefers-reduced-motion: reduce) {
+                .animate-on-scroll {
+                    transition: none !important;
+                    opacity: 1 !important;
+                    transform: none !important;
+                }
+            }
+
+            /* Card Hover Micro-interactions */
+            .service-hover {
+                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    box-shadow 0.4s ease;
+            }
+
+            .service-hover:hover {
+                transform: translateY(-8px) scale(1.02) !important;
+                box-shadow: var(--shadow-hover-val) !important;
+            }
+
+            /* Button Hover Micro-interactions */
+            .btn-bounce {
+                transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    box-shadow 0.3s ease;
+            }
+
+            .btn-bounce:hover {
+                transform: translateY(-4px) scale(1.03);
+                box-shadow: var(--shadow-hover-val);
+            }
     </style>
 
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
-    <!-- Playful Background Pattern -->
-    <div class="bg-pattern"></div>
+<!-- Playful Background Pattern -->
+<div class="bg-pattern"></div>
 
-    <!-- Decorative Floating Shapes -->
-    <div class="shape shape-circle shape-1 box-shadow"></div>
-    <div class="shape shape-triangle shape-2"></div>
-    <div class="shape shape-squiggle shape-3">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 50 Q 25 10, 50 50 T 90 50" stroke="var(--color-secondary)" stroke-width="8"
-                stroke-linecap="round" />
-        </svg>
-    </div>
-    <div class="shape shape-dot shape-4"></div>
-    <div class="shape shape-circle shape-5"></div>
+<!-- Decorative Floating Shapes -->
+<div class="shape shape-circle shape-1 box-shadow"></div>
+<div class="shape shape-triangle shape-2"></div>
+<div class="shape shape-squiggle shape-3">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 50 Q 25 10, 50 50 T 90 50" stroke="var(--color-secondary)" stroke-width="8"
+            stroke-linecap="round" />
+    </svg>
+</div>
+<div class="shape shape-dot shape-4"></div>
+<div class="shape shape-circle shape-5"></div>
 
-    <!-- Navbar -->
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">Career Clout</a>
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="#" class="logo">
+            <svg class="logo-icon" width="168" height="211" viewBox="0 0 168 211" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M46.002 145.5L13.002 198" stroke="currentColor" stroke-width="26" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M75.002 109L103.335 149M116.669 79L145.002 119" stroke="currentColor" stroke-width="13"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M151.502 79C151.502 44.206 123.296 16 88.502 16C53.708 16 25.502 44.206 25.502 79C25.502 113.794 53.708 142 88.502 142C123.296 142 151.502 113.794 151.502 79Z"
+                    stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M97.0186 75.3509L95.6554 76.3436L126.399 120.112C128.099 122.447 128.95 123.614 129.239 124.813C129.624 126.411 129.359 128.097 128.502 129.5C127.859 130.552 126.691 131.402 124.356 133.103C122.021 134.803 120.854 135.653 119.655 135.943C118.057 136.328 116.371 136.063 114.968 135.206C113.916 134.562 113.066 133.395 111.365 131.06L80.6219 87.2919L79.2588 88.2846C74.0402 92.0851 71.4311 93.9851 69.6489 92.9812C67.8668 91.9772 68.3455 88.8768 69.3032 82.6757L69.3032 82.6757L71.6804 67.2799C72.162 64.1612 72.4029 62.6018 73.5409 61.773C74.679 60.9442 76.2371 61.1935 79.3531 61.6923L94.7356 64.1544C100.931 65.1461 104.029 65.6419 104.438 67.6461C104.846 69.6503 102.237 71.5505 97.0186 75.3509Z"
+                    fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            Career Clout
+        </a>
 
-            <nav class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#why-us">Why Us</a>
-                <a href="#about">About</a>
-                <a href="#process">How It Works</a>
-                <a href="#contact">Contact</a>
-            </nav>
+        <nav class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#about">About</a>
+            <a href="#process">How It Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
-            <div class="nav-actions">
-                <a href="#contact" class="btn btn-primary btn-pill btn-bounce box-shadow">
-                    Book Consultation <i class="ph-bold ph-arrow-up-right"></i>
-                </a>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="ph-bold ph-list"></i>
-                </button>
-            </div>
+        <div class="nav-actions">
+            <a href="#contact" class="btn btn-primary btn-pill btn-bounce box-shadow">
+                Book Consultation <i class="ph-bold ph-arrow-up-right"></i>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="ph-bold ph-list"></i>
+            </button>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <!-- Layer 1: Background -->
-            <div class="hero-bg-dots"></div>
-            <div class="hero-bg-faded-blob"></div>
-            <div class="hero-bg-shape hero-bg-ring"></div>
-            <div class="hero-bg-shape hero-bg-ring-2"></div>
-            <div class="hero-bg-shape hero-bg-square"></div>
-            <div class="hero-bg-shape hero-bg-dot-cluster">
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-            </div>
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Layer 1: Background -->
+        <div class="hero-bg-dots"></div>
+        <div class="hero-bg-faded-blob"></div>
+        <div class="hero-bg-shape hero-bg-ring"></div>
+        <div class="hero-bg-shape hero-bg-ring-2"></div>
+        <div class="hero-bg-shape hero-bg-square"></div>
+        <div class="hero-bg-shape hero-bg-dot-cluster">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+        </div>
 
-            <div class="container hero-container">
-                <!-- Left: Headline + CTA -->
-                <div class="hero-content">
-                    <div class="tagline box-shadow">
-                        <span class="tagline-icon"><i class="ph-fill ph-globe-hemisphere-west"></i></span>
-                        <span>Global Opportunities Await</span>
-                    </div>
-
-                    <h1 class="hero-title-tight">
-                        Build Your Global Career
-                        <div class="eyes">
-                            <div class="eye"><div class="pupil"></div></div>
-                            <div class="eye"><div class="pupil"></div></div>
-                        </div>
-                        <br /><span class="highlight-underline text-primary">Without Limits</span>
-                    </h1>
-
-                    <p class="hero-subtext">
-                        Expert guidance for visas, careers, and global opportunities &mdash;
-                        all in one place.
-                    </p>
-
-                    <div class="hero-buttons">
-                        <a href="#contact" id="hero-cta-primary" class="btn btn-primary btn-large btn-pill btn-bounce box-shadow">
-                            Book Consultation <i class="ph-bold ph-arrow-right"></i>
-                        </a>
-                        <a href="#services" id="hero-cta-secondary" class="btn btn-outline btn-large btn-pill btn-bounce">
-                            Explore Services <i class="ph-bold ph-arrow-down"></i>
-                        </a>
-                    </div>
-
-                    <div class="trust-micro">
-                        <div class="trust-avatars">
-                            <img src="https://i.pravatar.cc/100?img=1" alt="Happy client 1" loading="lazy">
-                            <img src="https://i.pravatar.cc/100?img=2" alt="Happy client 2" loading="lazy">
-                            <img src="https://i.pravatar.cc/100?img=3" alt="Happy client 3" loading="lazy">
-                            <img src="https://i.pravatar.cc/100?img=4" alt="Happy client 4" loading="lazy">
-                        </div>
-                        <span class="trust-text">Trusted by 2,000+ clients globally</span>
-                    </div>
+        <div class="container hero-container">
+            <!-- Left: Headline + CTA -->
+            <div class="hero-content">
+                <div class="tagline box-shadow">
+                    <span class="tagline-icon"><i class="ph-fill ph-globe-hemisphere-west"></i></span>
+                    <span>Global Opportunities Await</span>
                 </div>
 
-                <!-- Right: Animated Globe System -->
-                <div class="hero-visual">
-                    <!-- Globe stage receives mouse parallax -->
-                    <div class="globe-stage" id="globeStage">
-
-                        <!-- Outer decoration rings -->
-                        <div class="orbit-ring-2"></div>
-
-                        <!-- Orbiting icon buttons (Layer 3 foreground) -->
-                        <div class="orbit-icon orbit-icon-1"  title="Study Abroad">
-                            <i class="ph-bold ph-graduation-cap"></i>
+                <h1 class="hero-title-tight">
+                    Build Your Global Career
+                    <div class="eyes">
+                        <div class="eye">
+                            <div class="pupil"></div>
                         </div>
-                        <div class="orbit-icon orbit-icon-2" title="Work Permits">
-                            <i class="ph-bold ph-briefcase"></i>
-                        </div>
-                        <div class="orbit-icon orbit-icon-3" title="Travel Visas">
-                            <i class="ph-bold ph-airplane-in-flight"></i>
-                        </div>
-                        <div class="orbit-icon orbit-icon-4" title="Relocate">
-                            <i class="ph-bold ph-map-pin"></i>
-                        </div>
-
-                        <!-- Inner dashed orbit ring -->
-                        <div class="orbit-ring"></div>
-
-                        <!-- Layer 2: Globe Core -->
-                        <div class="globe-core">
-                            <div class="globe-grid"></div>
-                            <div class="continent continent-americas"></div>
-                            <div class="continent continent-europe"></div>
-                            <div class="continent continent-africa"></div>
-                            <div class="continent continent-asia"></div>
-                            <div class="continent continent-oceania"></div>
-                            <div class="globe-shine"></div>
-                        </div>
-
-                        <!-- Layer 3: Floating badge cards -->
-                        <div class="hero-badge hero-badge-success" id="hero-badge-1">
-                            <div class="badge-icon-wrap" style="background:#FEF3C7;">
-                                <i class="ph-bold ph-seal-check" style="color:#D97706;"></i>
-                            </div>
-                            <div class="badge-body">
-                                <strong>98%</strong>
-                                <span>Success Rate</span>
-                            </div>
-                        </div>
-
-                        <div class="hero-badge hero-badge-global" id="hero-badge-2">
-                            <div class="badge-icon-wrap" style="background:#D1FAE5;">
-                                <i class="ph-bold ph-rocket-launch" style="color:#059669;"></i>
-                            </div>
-                            <div class="badge-body">
-                                <strong>Global Reach</strong>
-                                <span>50+ Countries</span>
-                            </div>
-                        </div>
-
-                        <div class="hero-badge hero-badge-countries" id="hero-badge-3">
-                            <div class="badge-icon-wrap" style="background:#EDE9FE;">
-                                <i class="ph-bold ph-users-three" style="color:#7C3AED;"></i>
-                            </div>
-                            <div class="badge-body">
-                                <strong>2,000+</strong>
-                                <span>Clients Helped</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services" id="services">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2>Our Core <span>Services</span></h2>
-                    <p>Comprehensive solutions for your global journey</p>
-                </div>
-
-                <div class="services-grid services-hierarchical">
-                    <!-- Featured Priority 1 -->
-                    <div class="service-card service-featured bg-soft box-shadow service-hover">
-                        <div class="service-tag tag-accent box-shadow-sm">Most Popular</div>
-                        <div class="card-icon-wrapper bg-primary box-shadow-sm">
-                            <i class="ph-bold ph-graduation-cap"></i>
-                        </div>
-                        <h3>Student Visa & Study Abroad</h3>
-                        <p>End-to-end guidance from university selection to visa approval smoothly.</p>
-                        <a href="#process" class="service-link">Learn More &rarr;</a>
-                    </div>
-
-                    <!-- Neutral -->
-                    <div class="service-card box-shadow service-hover">
-                        <div class="card-icon-wrapper bg-secondary box-shadow-sm">
-                            <i class="ph-bold ph-airplane"></i>
-                        </div>
-                        <h3>Visitor Visa</h3>
-                        <p>Hassle-free tourist and visitor visas for seamless travel experiences.</p>
-                        <a href="#process" class="service-link">Learn More &rarr;</a>
-                    </div>
-
-                    <!-- Featured Priority 2 -->
-                    <div class="service-card service-featured bg-soft box-shadow service-hover">
-                        <div class="service-tag tag-primary box-shadow-sm">Recommended</div>
-                        <div class="card-icon-wrapper bg-accent box-shadow-sm">
-                            <i class="ph-bold ph-briefcase"></i>
-                        </div>
-                        <h3>Work Permit & Employment</h3>
-                        <p>Secure international employment with fast-tracked work permits.</p>
-                        <a href="#process" class="service-link">Learn More &rarr;</a>
-                    </div>
-
-                    <!-- Neutral -->
-                    <div class="service-card box-shadow service-hover">
-                        <div class="card-icon-wrapper bg-green box-shadow-sm">
-                            <i class="ph-bold ph-laptop"></i>
-                        </div>
-                        <h3>Digital Nomad Visa</h3>
-                        <p>Work remotely from around the world with specialized nomad visas.</p>
-                        <a href="#process" class="service-link">Learn More &rarr;</a>
-                    </div>
-
-                    <!-- Neutral -->
-                    <div class="service-card box-shadow service-hover">
-                        <div class="card-icon-wrapper bg-primary box-shadow-sm">
-                            <i class="ph-bold ph-users"></i>
-                        </div>
-                        <h3>Global Headhunting</h3>
-                        <p>Connecting dynamic top-tier talent with organizations worldwide.</p>
-                        <a href="#process" class="service-link">Learn More &rarr;</a>
-                    </div>
-
-                    <!-- Neutral -->
-                    <div class="service-card box-shadow service-hover">
-                        <div class="card-icon-wrapper bg-secondary box-shadow-sm">
-                            <i class="ph-bold ph-target"></i>
-                        </div>
-                        <h3>Career Coaching</h3>
-                        <p>Expert mentorship and profiling to build a powerful international resume.</p>
-                        <a href="#process" class="service-link">Learn More &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- CTA Hook -->
-                <div class="services-cta text-center mt-5" style="margin-top: 3rem;">
-                    <p style="font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem;">Not sure which service is right
-                        for you?</p>
-                    <a href="#contact" class="btn btn-primary btn-pill btn-large btn-bounce box-shadow">Get Expert
-                        Consultation</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us Section -->
-        <section class="why-us" id="why-us">
-            <div class="why-bg-pattern"></div>
-            <div class="container why-container">
-                <div class="section-header text-center">
-                    <h2>Why Choose <span>Career Clout</span></h2>
-                    <p>Unlocking potential through trust, ethics, and unparalleled expertise.</p>
-                </div>
-
-                <div class="why-list-layout">
-                    <!-- Row 1 -->
-                    <div class="why-row">
-                        <div class="why-icon-box bg-white box-shadow text-center">
-                            <div class="why-icon bg-primary tilt-icon-left"><i class="ph-bold ph-globe"></i></div>
-                        </div>
-                        <div class="why-text-box">
-                            <h4><span class="text-accent-bold">Global Reach</span> & Connectivity</h4>
-                            <p>Operating from our Barcelona headquarters with direct connections worldwide, we open
-                                exclusive doors to key markets efficiently and securely for all clients.</p>
-                            <div class="why-stat box-shadow-sm">Global clients &bull; 20+ countries</div>
+                        <div class="eye">
+                            <div class="pupil"></div>
                         </div>
                     </div>
+                    <br /><span class="highlight-underline text-primary">Without Limits</span>
+                </h1>
 
-                    <!-- Row 2 -->
-                    <div class="why-row why-reverse">
-                        <div class="why-icon-box bg-white box-shadow text-center">
-                            <div class="why-icon bg-green tilt-icon-right"><i class="ph-bold ph-chart-bar"></i></div>
-                        </div>
-                        <div class="why-text-box">
-                            <h4>Consistently <span class="text-accent-bold">High Success</span></h4>
-                            <p>We maintain an exceptional, highly-vetted 98% visa success rate. Your applications are
-                                constantly monitored to ensure pristine submission standards without compromise.</p>
-                            <div class="why-stat box-shadow-sm">98% success rate &bull; 2k+ approvals</div>
-                        </div>
-                    </div>
+                <p class="hero-subtext">
+                    Expert guidance for visas, careers, and global opportunities &mdash;
+                    all in one place.
+                </p>
 
-                    <!-- Row 3 -->
-                    <div class="why-row">
-                        <div class="why-icon-box bg-white box-shadow text-center">
-                            <div class="why-icon bg-secondary tilt-icon-left"><i class="ph-bold ph-shield-check"></i>
-                            </div>
-                        </div>
-                        <div class="why-text-box">
-                            <h4><span class="text-accent-bold">Ethical</span> & Custom Consultations</h4>
-                            <p>Transparent and honest guidance tailored strictly to your specific limits and profiles.
-                                We provide customized support that adapts to shifting regulations and personal needs.
-                            </p>
-                            <div class="why-stat box-shadow-sm">Certified experts &bull; 100% legal compliance</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about" id="about">
-            <div class="about-bg-blob"></div>
-            <div class="container about-container">
-                <!-- Image Left -->
-                <div class="about-visual">
-                    <div class="about-backdrop box-shadow"></div>
-                    <div class="about-image-wrapper box-shadow">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Career Clout Team">
-                    </div>
-                    <div class="shape shape-circle about-shape-1 box-shadow"></div>
-                </div>
-
-                <!-- Text Right -->
-                <div class="about-content">
-                    <h2>Who <span>We Are</span></h2>
-
-                    <p class="about-intro"><strong>Career Clout</strong> is a premier international consultancy
-                        connecting ambitious people with <span class="text-accent-bold">global education</span>, career,
-                        and migration opportunities across borders seamlessly.</p>
-
-                    <ul class="about-bullets">
-                        <li><i class="ph-fill ph-check-circle"></i> Results-driven, compliance-focused consulting.</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Smooth and stress-free transitions globally.</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Transparent workflows without hidden limits.</li>
-                    </ul>
-
-                    <div class="about-micro-stats">
-                        <div class="micro-stat">
-                            <strong>10+</strong>
-                            <span>Countries</span>
-                        </div>
-                        <div class="micro-stat">
-                            <strong>2k+</strong>
-                            <span>Clients</span>
-                        </div>
-                        <div class="micro-stat">
-                            <strong>98%</strong>
-                            <span>Success</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="shape shape-triangle about-shape-2"></div>
-        </section>
-
-        <!-- How It Works Section -->
-        <section class="process" id="process">
-            <div class="process-bg-pattern"></div>
-            <div class="container process-container">
-                <div class="section-header text-center">
-                    <h2>How It <span>Works</span></h2>
-                    <p>A proven, transparent journey to your global goals.</p>
-                </div>
-
-                <div class="process-track">
-                    <!-- SVG Connecting Line -->
-                    <svg class="process-line" preserveAspectRatio="none" viewBox="0 0 1000 100"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 50,50 Q 250,150 500,50 T 950,50" stroke="var(--color-border)" stroke-width="4"
-                            stroke-dasharray="10 10" fill="none" stroke-linecap="round" />
-                    </svg>
-
-                    <!-- Step 1 (Emphasized) -->
-                    <div class="process-step step-featured bg-soft box-shadow">
-                        <div class="step-num text-accent-bold">01</div>
-                        <div class="step-icon bg-primary box-shadow-sm"><i class="ph-bold ph-chat-circle"></i></div>
-                        <h3>Consultation</h3>
-                        <p>We analyze your profile, outline options, and define a clear roadmap.</p>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="process-step box-shadow step-down">
-                        <div class="step-num">02</div>
-                        <div class="step-icon bg-secondary box-shadow-sm"><i class="ph-bold ph-file-text"></i></div>
-                        <h3>Documentation</h3>
-                        <p>We assemble and rigorously verify all required paperwork for compliance.</p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="process-step box-shadow">
-                        <div class="step-num">03</div>
-                        <div class="step-icon bg-green box-shadow-sm"><i class="ph-bold ph-gear-six"></i></div>
-                        <h3>Processing</h3>
-                        <p>Applications are submitted securely and monitored continuously by our team.</p>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="process-step box-shadow step-down">
-                        <div class="step-num">04</div>
-                        <div class="step-icon bg-accent box-shadow-sm"><i class="ph-bold ph-map-pin"></i></div>
-                        <h3>Relocation</h3>
-                        <p>Visa granted. We assist with onboarding and transition to your new country.</p>
-                    </div>
-                </div>
-
-                <div class="text-center" style="margin-top: 5rem;">
-                    <a href="#contact" class="btn btn-primary btn-large btn-pill btn-bounce">
-                        Start Your Consultation <i class="ph-bold ph-arrow-right"></i>
+                <div class="hero-buttons">
+                    <a href="#contact" id="hero-cta-primary"
+                        class="btn btn-primary btn-large btn-pill btn-bounce box-shadow">
+                        Book Consultation <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                    <a href="#services" id="hero-cta-secondary" class="btn btn-outline btn-large btn-pill btn-bounce">
+                        Explore Services <i class="ph-bold ph-arrow-down"></i>
                     </a>
                 </div>
-            </div>
-        </section>
 
-        <!-- CTA Section (High Impact) -->
-        <section class="cta-section">
-            <div class="cta-bg-blob"></div>
-            <div class="container">
-                <div class="cta-wrapper box-shadow">
-                    <div class="cta-wrapper-inner cta-content text-center">
-                        <h2 class="cta-title">Start Your <span class="highlight-underline">Global Journey</span> Today
-                        </h2>
-                        <p class="cta-subtitle">Don't let borders hold back your potential. Speak with our experts now.
+                <div class="trust-micro">
+                    <div class="trust-avatars">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="Happy client 1" loading="lazy">
+                        <img src="https://i.pravatar.cc/100?img=2" alt="Happy client 2" loading="lazy">
+                        <img src="https://i.pravatar.cc/100?img=3" alt="Happy client 3" loading="lazy">
+                        <img src="https://i.pravatar.cc/100?img=4" alt="Happy client 4" loading="lazy">
+                    </div>
+                    <span class="trust-text">Trusted by 2,000+ clients globally</span>
+                </div>
+            </div>
+
+            <!-- Right: Animated Globe System -->
+            <div class="hero-visual">
+                <!-- Globe stage receives mouse parallax -->
+                <div class="globe-stage" id="globeStage">
+
+                    <!-- Outer decoration rings -->
+                    <div class="orbit-ring-2"></div>
+
+                    <!-- Orbiting icon buttons (Layer 3 foreground) -->
+                    <div class="orbit-icon orbit-icon-1" title="Study Abroad">
+                        <i class="ph-bold ph-graduation-cap"></i>
+                    </div>
+                    <div class="orbit-icon orbit-icon-2" title="Work Permits">
+                        <i class="ph-bold ph-briefcase"></i>
+                    </div>
+                    <div class="orbit-icon orbit-icon-3" title="Travel Visas">
+                        <i class="ph-bold ph-airplane-in-flight"></i>
+                    </div>
+                    <div class="orbit-icon orbit-icon-4" title="Relocate">
+                        <i class="ph-bold ph-map-pin"></i>
+                    </div>
+
+                    <!-- Inner dashed orbit ring -->
+                    <div class="orbit-ring"></div>
+
+                    <!-- Layer 2: Globe Core -->
+                    <div class="globe-core">
+                        <div class="globe-grid"></div>
+                        <div class="continent continent-americas"></div>
+                        <div class="continent continent-europe"></div>
+                        <div class="continent continent-africa"></div>
+                        <div class="continent continent-asia"></div>
+                        <div class="continent continent-oceania"></div>
+                        <div class="globe-shine"></div>
+                    </div>
+
+                    <!-- Layer 3: Floating badge cards -->
+                    <div class="hero-badge hero-badge-success" id="hero-badge-1">
+                        <div class="badge-icon-wrap" style="background:#FEF3C7;">
+                            <i class="ph-bold ph-seal-check" style="color:#D97706;"></i>
+                        </div>
+                        <div class="badge-body">
+                            <strong>98%</strong>
+                            <span>Success Rate</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-badge hero-badge-global" id="hero-badge-2">
+                        <div class="badge-icon-wrap" style="background:#D1FAE5;">
+                            <i class="ph-bold ph-rocket-launch" style="color:#059669;"></i>
+                        </div>
+                        <div class="badge-body">
+                            <strong>Global Reach</strong>
+                            <span>50+ Countries</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-badge hero-badge-countries" id="hero-badge-3">
+                        <div class="badge-icon-wrap" style="background:#EDE9FE;">
+                            <i class="ph-bold ph-users-three" style="color:#7C3AED;"></i>
+                        </div>
+                        <div class="badge-body">
+                            <strong>2,000+</strong>
+                            <span>Clients Helped</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Core <span>Services</span></h2>
+                <p>Comprehensive solutions for your global journey</p>
+            </div>
+
+            <div class="services-grid services-hierarchical">
+                <!-- Featured Priority 1 -->
+                <div class="service-card service-featured bg-soft box-shadow service-hover">
+                    <div class="service-tag tag-accent box-shadow-sm">Most Popular</div>
+                    <div class="card-icon-wrapper bg-primary box-shadow-sm">
+                        <i class="ph-bold ph-graduation-cap"></i>
+                    </div>
+                    <h3>Student Visa & Study Abroad</h3>
+                    <p>End-to-end guidance from university selection to visa approval smoothly.</p>
+                    <a href="#process" class="service-link">Learn More &rarr;</a>
+                </div>
+
+                <!-- Neutral -->
+                <div class="service-card box-shadow service-hover">
+                    <div class="card-icon-wrapper bg-secondary box-shadow-sm">
+                        <i class="ph-bold ph-airplane"></i>
+                    </div>
+                    <h3>Visitor Visa</h3>
+                    <p>Hassle-free tourist and visitor visas for seamless travel experiences.</p>
+                    <a href="#process" class="service-link">Learn More &rarr;</a>
+                </div>
+
+                <!-- Featured Priority 2 -->
+                <div class="service-card service-featured bg-soft box-shadow service-hover">
+                    <div class="service-tag tag-primary box-shadow-sm">Recommended</div>
+                    <div class="card-icon-wrapper bg-accent box-shadow-sm">
+                        <i class="ph-bold ph-briefcase"></i>
+                    </div>
+                    <h3>Work Permit & Employment</h3>
+                    <p>Secure international employment with fast-tracked work permits.</p>
+                    <a href="#process" class="service-link">Learn More &rarr;</a>
+                </div>
+
+                <!-- Neutral -->
+                <div class="service-card box-shadow service-hover">
+                    <div class="card-icon-wrapper bg-green box-shadow-sm">
+                        <i class="ph-bold ph-laptop"></i>
+                    </div>
+                    <h3>Digital Nomad Visa</h3>
+                    <p>Work remotely from around the world with specialized nomad visas.</p>
+                    <a href="#process" class="service-link">Learn More &rarr;</a>
+                </div>
+
+                <!-- Neutral -->
+                <div class="service-card box-shadow service-hover">
+                    <div class="card-icon-wrapper bg-primary box-shadow-sm">
+                        <i class="ph-bold ph-users"></i>
+                    </div>
+                    <h3>Global Headhunting</h3>
+                    <p>Connecting dynamic top-tier talent with organizations worldwide.</p>
+                    <a href="#process" class="service-link">Learn More &rarr;</a>
+                </div>
+
+                <!-- Neutral -->
+                <div class="service-card box-shadow service-hover">
+                    <div class="card-icon-wrapper bg-secondary box-shadow-sm">
+                        <i class="ph-bold ph-target"></i>
+                    </div>
+                    <h3>Career Coaching</h3>
+                    <p>Expert mentorship and profiling to build a powerful international resume.</p>
+                    <a href="#process" class="service-link">Learn More &rarr;</a>
+                </div>
+            </div>
+
+            <!-- CTA Hook -->
+            <div class="services-cta text-center mt-5" style="margin-top: 3rem;">
+                <p style="font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem;">Not sure which service is right
+                    for you?</p>
+                <a href="#contact" class="btn btn-primary btn-pill btn-large btn-bounce box-shadow">Get Expert
+                    Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="why-bg-pattern"></div>
+        <div class="container why-container">
+            <div class="section-header text-center">
+                <h2>Why Choose <span>Career Clout</span></h2>
+                <p>Unlocking potential through trust, ethics, and unparalleled expertise.</p>
+            </div>
+
+            <div class="why-list-layout">
+                <!-- Row 1 -->
+                <div class="why-row">
+                    <div class="why-icon-box bg-white box-shadow text-center">
+                        <div class="why-icon bg-primary tilt-icon-left"><i class="ph-bold ph-globe"></i></div>
+                    </div>
+                    <div class="why-text-box">
+                        <h4><span class="text-accent-bold">Global Reach</span> & Connectivity</h4>
+                        <p>Operating from our Barcelona headquarters with direct connections worldwide, we open
+                            exclusive doors to key markets efficiently and securely for all clients.</p>
+                        <div class="why-stat box-shadow-sm">Global clients &bull; 20+ countries</div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="why-row why-reverse">
+                    <div class="why-icon-box bg-white box-shadow text-center">
+                        <div class="why-icon bg-green tilt-icon-right"><i class="ph-bold ph-chart-bar"></i></div>
+                    </div>
+                    <div class="why-text-box">
+                        <h4>Consistently <span class="text-accent-bold">High Success</span></h4>
+                        <p>We maintain an exceptional, highly-vetted 98% visa success rate. Your applications are
+                            constantly monitored to ensure pristine submission standards without compromise.</p>
+                        <div class="why-stat box-shadow-sm">98% success rate &bull; 2k+ approvals</div>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="why-row">
+                    <div class="why-icon-box bg-white box-shadow text-center">
+                        <div class="why-icon bg-secondary tilt-icon-left"><i class="ph-bold ph-shield-check"></i>
+                        </div>
+                    </div>
+                    <div class="why-text-box">
+                        <h4><span class="text-accent-bold">Ethical</span> & Custom Consultations</h4>
+                        <p>Transparent and honest guidance tailored strictly to your specific limits and profiles.
+                            We provide customized support that adapts to shifting regulations and personal needs.
                         </p>
-
-                        <a href="#contact" class="btn btn-primary btn-large btn-pill btn-bounce box-shadow"
-                            style="padding: 1.25rem 2.5rem; font-size: 1.25rem;">
-                            Get Your Visa Strategy Call <i class="ph-bold ph-globe"></i>
-                        </a>
-
-                        <div class="cta-trust">
-                            <i class="ph-fill ph-check-circle"></i> Professional guidance &bull; 24h response
-                        </div>
+                        <div class="why-stat box-shadow-sm">Certified experts &bull; 100% legal compliance</div>
                     </div>
-                    <!-- Contextual Shapes -->
-                    <div class="shape shape-circle cta-shape-1 box-shadow"></div>
-                    <div class="shape shape-triangle cta-shape-2 box-shadow"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-            <div class="container contact-container">
-                <!-- Text / Image -->
-                <div class="contact-info">
-                    <h2>Ready to Talk?</h2>
-                    <p>Tell us a bit about your goals, and we'll get in touch to outline the best path forward for your
-                        international ambitions.</p>
-                    <div class="contact-decoration">
-                        <div class="shape shape-blob bg-secondary box-shadow-sm contact-shape-1"></div>
-                        <div class="shape shape-dot contact-shape-2"></div>
-                    </div>
-                </div>
-
-                <!-- Form Content -->
-                <div class="contact-form-wrapper">
-                    <div class="contact-form-backdrop"></div>
-                    <form class="contact-form box-shadow">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="form-name">Full Name <span class="text-primary">*</span></label>
-                                <input type="text" id="form-name" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-phone">Phone Number <span class="text-primary">*</span></label>
-                                <input type="tel" id="form-phone" placeholder="+1 (234) 567-890" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="form-email">Email Address</label>
-                                <input type="email" id="form-email" placeholder="john@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="form-service">Service Type</label>
-                                <select id="form-service" style="appearance: auto; background-image: none; padding-right: 1rem;">
-                                    <option value="" disabled selected>Select an option</option>
-                                    <option value="Student Visa">Student Visa</option>
-                                    <option value="Work Visa">Work Permit & Employment</option>
-                                    <option value="Visitor Visa">Visitor Visa</option>
-                                    <option value="Nomad Visa">Digital Nomad Visa</option>
-                                    <option value="Recruitment">Global Headhunting</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="form-country">Preferred Country</label>
-                            <input type="text" id="form-country" placeholder="e.g. Canada, Germany, USA">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="form-message">Your Background & Goals</label>
-                            <textarea id="form-message" placeholder="Please provide brief details..."></textarea>
-                        </div>
-
-                        <button type="submit"
-                            class="btn btn-primary btn-xl btn-pill w-100 box-shadow btn-bounce mt-3">Book My
-                            Consultation</button>
-                        <p class="form-footer-text text-center"><i class="ph-bold ph-clock"></i> We'll contact you within 24 hours.</p>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="footer" id="footer">
-        <div class="footer-bg-pattern"></div>
-        <div class="container footer-container box-shadow border-bottom-thick">
-            <div class="footer-brand">
-                <a href="#" class="logo footer-logo">Career Clout</a>
-                <h3 class="footer-brand-heading" style="margin-top: 0.5rem;">Start your global journey today</h3>
-                <a href="#contact"
-                    class="btn btn-primary btn-pill btn-large box-shadow btn-bounce mt-3 w-100 text-center"
-                    style="justify-content: center;">Book Consultation</a>
-                <p class="footer-microcopy"><i class="ph-fill ph-check-circle text-green"></i> Professional guidance
-                    &bull; 24h response</p>
-            </div>
-
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#why-us">Why Us</a>
-                <a href="#about">About</a>
-                <a href="#process">How It Works</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-                <a href="#" class="font-weight-bold">Legal Disclaimer</a>
-            </div>
-
-            <div class="footer-contact">
-                <h4>Contact Us</h4>
-                <a href="#"><i class="ph-bold ph-map-pin"></i> Barcelona, Spain</a>
-                <a href="tel:+1234567890"><i class="ph-bold ph-phone"></i> +1 (234) 567-890</a>
-                <a href="mailto:hello@careerclout.com"><i class="ph-bold ph-envelope"></i> hello@careerclout.com</a>
-
-                <div class="social-links-new mt-2">
-                    <a href="#" class="social-btn" aria-label="Twitter"><i class="ph-fill ph-twitter-logo"></i></a>
-                    <a href="#" class="social-btn" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
-                    <a href="#" class="social-btn" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container copyright-bar">
-            <p class="copyright-text">&copy; 2026 Career Clout. All rights reserved.</p>
-            <p class="copyright-tagline">Helping you build global careers</p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-bg-blob"></div>
+        <div class="container about-container">
+            <!-- Image Left -->
+            <div class="about-visual">
+                <div class="about-backdrop box-shadow"></div>
+                <div class="about-image-wrapper box-shadow">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Career Clout Team">
+                </div>
+                <div class="shape shape-circle about-shape-1 box-shadow"></div>
+            </div>
+
+            <!-- Text Right -->
+            <div class="about-content">
+                <h2>Who <span>We Are</span></h2>
+
+                <p class="about-intro"><strong>Career Clout</strong> is a premier international consultancy
+                    connecting ambitious people with <span class="text-accent-bold">global education</span>, career,
+                    and migration opportunities across borders seamlessly.</p>
+
+                <ul class="about-bullets">
+                    <li><i class="ph-fill ph-check-circle"></i> Results-driven, compliance-focused consulting.</li>
+                    <li><i class="ph-fill ph-check-circle"></i> Smooth and stress-free transitions globally.</li>
+                    <li><i class="ph-fill ph-check-circle"></i> Transparent workflows without hidden limits.</li>
+                </ul>
+
+                <div class="about-micro-stats">
+                    <div class="micro-stat">
+                        <strong>10+</strong>
+                        <span>Countries</span>
+                    </div>
+                    <div class="micro-stat">
+                        <strong>2k+</strong>
+                        <span>Clients</span>
+                    </div>
+                    <div class="micro-stat">
+                        <strong>98%</strong>
+                        <span>Success</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+        <div class="shape shape-triangle about-shape-2"></div>
+    </section>
 
-    <!-- Script (Inlined from separate-files/script.js) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Custom Cursor Logic
-            const cursor = document.querySelector('.custom-cursor');
+    <!-- How It Works Section -->
+    <section class="process" id="process">
+        <div class="process-bg-pattern"></div>
+        <div class="container process-container">
+            <div class="section-header text-center">
+                <h2>How It <span>Works</span></h2>
+                <p>A proven, transparent journey to your global goals.</p>
+            </div>
+
+            <div class="process-track">
+                <!-- SVG Connecting Line -->
+                <svg class="process-line" preserveAspectRatio="none" viewBox="0 0 1000 100"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 50,50 Q 250,150 500,50 T 950,50" stroke="var(--color-border)" stroke-width="4"
+                        stroke-dasharray="10 10" fill="none" stroke-linecap="round" />
+                </svg>
+
+                <!-- Step 1 (Emphasized) -->
+                <div class="process-step step-featured bg-soft box-shadow">
+                    <div class="step-num text-accent-bold">01</div>
+                    <div class="step-icon bg-primary box-shadow-sm"><i class="ph-bold ph-chat-circle"></i></div>
+                    <h3>Consultation</h3>
+                    <p>We analyze your profile, outline options, and define a clear roadmap.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step box-shadow step-down">
+                    <div class="step-num">02</div>
+                    <div class="step-icon bg-secondary box-shadow-sm"><i class="ph-bold ph-file-text"></i></div>
+                    <h3>Documentation</h3>
+                    <p>We assemble and rigorously verify all required paperwork for compliance.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step box-shadow">
+                    <div class="step-num">03</div>
+                    <div class="step-icon bg-green box-shadow-sm"><i class="ph-bold ph-gear-six"></i></div>
+                    <h3>Processing</h3>
+                    <p>Applications are submitted securely and monitored continuously by our team.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step box-shadow step-down">
+                    <div class="step-num">04</div>
+                    <div class="step-icon bg-accent box-shadow-sm"><i class="ph-bold ph-map-pin"></i></div>
+                    <h3>Relocation</h3>
+                    <p>Visa granted. We assist with onboarding and transition to your new country.</p>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 5rem;">
+                <a href="#contact" class="btn btn-primary btn-large btn-pill btn-bounce">
+                    Start Your Consultation <i class="ph-bold ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section (High Impact) -->
+    <section class="cta-section">
+        <div class="cta-bg-blob"></div>
+        <div class="container">
+            <div class="cta-wrapper box-shadow">
+                <div class="cta-wrapper-inner cta-content text-center">
+                    <h2 class="cta-title">Start Your <span class="highlight-underline">Global Journey</span> Today
+                    </h2>
+                    <p class="cta-subtitle">Don't let borders hold back your potential. Speak with our experts now.
+                    </p>
+
+                    <a href="#contact" class="btn btn-primary btn-large btn-pill btn-bounce box-shadow"
+                        style="padding: 1.25rem 2.5rem; font-size: 1.25rem;">
+                        Get Your Visa Strategy Call <i class="ph-bold ph-globe"></i>
+                    </a>
+
+                    <div class="cta-trust">
+                        <i class="ph-fill ph-check-circle"></i> Professional guidance &bull; 24h response
+                    </div>
+                </div>
+                <!-- Contextual Shapes -->
+                <div class="shape shape-circle cta-shape-1 box-shadow"></div>
+                <div class="shape shape-triangle cta-shape-2 box-shadow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container contact-container">
+            <!-- Text / Image -->
+            <div class="contact-info">
+                <h2>Ready to Talk?</h2>
+                <p>Tell us a bit about your goals, and we'll get in touch to outline the best path forward for your
+                    international ambitions.</p>
+                <div class="contact-decoration">
+                    <div class="shape shape-blob bg-secondary box-shadow-sm contact-shape-1"></div>
+                    <div class="shape shape-dot contact-shape-2"></div>
+                </div>
+            </div>
+
+            <!-- Form Content -->
+            <div class="contact-form-wrapper">
+                <div class="contact-form-backdrop"></div>
+                <form class="contact-form box-shadow">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="form-name">Full Name <span class="text-primary">*</span></label>
+                            <input type="text" id="form-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-phone">Phone Number <span class="text-primary">*</span></label>
+                            <input type="tel" id="form-phone" placeholder="+1 (234) 567-890" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="form-email">Email Address</label>
+                            <input type="email" id="form-email" placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-service">Service Type</label>
+                            <select id="form-service"
+                                style="appearance: auto; background-image: none; padding-right: 1rem;">
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Student Visa">Student Visa</option>
+                                <option value="Work Visa">Work Permit & Employment</option>
+                                <option value="Visitor Visa">Visitor Visa</option>
+                                <option value="Nomad Visa">Digital Nomad Visa</option>
+                                <option value="Recruitment">Global Headhunting</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-country">Preferred Country</label>
+                        <input type="text" id="form-country" placeholder="e.g. Canada, Germany, USA">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-message">Your Background & Goals</label>
+                        <textarea id="form-message" placeholder="Please provide brief details..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-xl btn-pill w-100 box-shadow btn-bounce mt-3">Book
+                        My
+                        Consultation</button>
+                    <p class="form-footer-text text-center"><i class="ph-bold ph-clock"></i> We'll contact you within 24
+                        hours.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer class="footer" id="footer">
+    <div class="footer-bg-pattern"></div>
+    <div class="container footer-container box-shadow border-bottom-thick">
+        <div class="footer-brand">
+            <a href="#" class="logo footer-logo">
+                <svg class="logo-icon" width="168" height="211" viewBox="0 0 168 211" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M46.002 145.5L13.002 198" stroke="currentColor" stroke-width="26" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M75.002 109L103.335 149M116.669 79L145.002 119" stroke="currentColor" stroke-width="13"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M151.502 79C151.502 44.206 123.296 16 88.502 16C53.708 16 25.502 44.206 25.502 79C25.502 113.794 53.708 142 88.502 142C123.296 142 151.502 113.794 151.502 79Z"
+                        stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M97.0186 75.3509L95.6554 76.3436L126.399 120.112C128.099 122.447 128.95 123.614 129.239 124.813C129.624 126.411 129.359 128.097 128.502 129.5C127.859 130.552 126.691 131.402 124.356 133.103C122.021 134.803 120.854 135.653 119.655 135.943C118.057 136.328 116.371 136.063 114.968 135.206C113.916 134.562 113.066 133.395 111.365 131.06L80.6219 87.2919L79.2588 88.2846C74.0402 92.0851 71.4311 93.9851 69.6489 92.9812C67.8668 91.9772 68.3455 88.8768 69.3032 82.6757L69.3032 82.6757L71.6804 67.2799C72.162 64.1612 72.4029 62.6018 73.5409 61.773C74.679 60.9442 76.2371 61.1935 79.3531 61.6923L94.7356 64.1544C100.931 65.1461 104.029 65.6419 104.438 67.6461C104.846 69.6503 102.237 71.5505 97.0186 75.3509Z"
+                        fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Career Clout
+            </a>
+            <h3 class="footer-brand-heading" style="margin-top: 0.5rem;">Start your global journey today</h3>
+            <a href="#contact" class="btn btn-primary btn-pill btn-large box-shadow btn-bounce mt-3 w-100 text-center"
+                style="justify-content: center;">Book Consultation</a>
+            <p class="footer-microcopy"><i class="ph-fill ph-check-circle text-green"></i> Professional guidance
+                &bull; 24h response</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#about">About</a>
+            <a href="#process">How It Works</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-links">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#" class="font-weight-bold">Legal Disclaimer</a>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <a href="#"><i class="ph-bold ph-map-pin"></i> Barcelona, Spain</a>
+            <a href="tel:+1234567890"><i class="ph-bold ph-phone"></i> +1 (234) 567-890</a>
+            <a href="mailto:hello@careerclout.com"><i class="ph-bold ph-envelope"></i> hello@careerclout.com</a>
+
+            <div class="social-links-new mt-2">
+                <a href="#" class="social-btn" aria-label="Twitter"><i class="ph-fill ph-twitter-logo"></i></a>
+                <a href="#" class="social-btn" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                <a href="#" class="social-btn" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container copyright-bar">
+        <p class="copyright-text">&copy; 2026 Career Clout. All rights reserved.</p>
+        <p class="copyright-tagline">Helping you build global careers</p>
+    </div>
+</footer>
+
+<!-- Script (Inlined from separate-files/script.js) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Custom Cursor Logic
+        const cursor = document.querySelector('.custom-cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            // Show cursor on first movement
+            if (cursor.style.display !== 'block') {
+                cursor.style.display = 'block';
+            }
+
+            // Smoothly move the custom cursor
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            // EYE TRACKING LOGIC
+            const eyes = document.querySelectorAll('.eye');
+            eyes.forEach(eye => {
+                const pupil = eye.querySelector('.pupil');
+                const eyeRect = eye.getBoundingClientRect();
+                const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+                const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+                const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+                const distance = Math.min(eyeRect.width / 4, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 10);
+
+                const pupilX = Math.cos(angle) * distance;
+                const pupilY = Math.sin(angle) * distance;
+
+                pupil.style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = menuBtn.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.className = 'ph-bold ph-x';
+                } else {
+                    icon.className = 'ph-bold ph-list';
+                }
+            });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                icon.className = 'ph-bold ph-list';
+            });
+        });
+
+        // Smooth Scrolling for service links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active Link Highlighting
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                const sectionId = current.getAttribute('id');
+                const link = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    if (link) link.classList.add('active');
+                } else {
+                    if (link) link.classList.remove('active');
+                }
+            });
+        });
+
+        // Form Submission Handling
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = contactForm.querySelector('button');
+                const originalText = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = '<i class="ph-bold ph-circle-notch ph-spin"></i> Sending...';
+                setTimeout(() => {
+                    alert('Thank you! Your message has been sent successfully. Our team will contact you shortly.');
+                    contactForm.reset();
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+
+        // ============================================
+        // Scroll Animations (Premium Observer)
+        // ============================================
+
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        // Apply to Services cards
+        document.querySelectorAll('.service-card').forEach((el, index) => {
+            el.classList.add('animate-on-scroll', 'animate-fade-up');
+            el.style.transitionDelay = `${(index % 3) * 150}ms`;
+            revealObserver.observe(el);
+        });
+
+        // Why Choose Us rows
+        document.querySelectorAll('.why-row').forEach((el, index) => {
+            el.classList.add('animate-on-scroll');
+            el.classList.add(index % 2 === 0 ? 'animate-slide-left' : 'animate-slide-right');
+            revealObserver.observe(el);
+        });
+
+        // About Section elements
+        const aboutVisual = document.querySelector('.about-visual');
+        const aboutContent = document.querySelector('.about-content');
+        if (aboutVisual) {
+            aboutVisual.classList.add('animate-on-scroll', 'animate-slide-left');
+            revealObserver.observe(aboutVisual);
+        }
+        if (aboutContent) {
+            aboutContent.classList.add('animate-on-scroll', 'animate-slide-right');
+            revealObserver.observe(aboutContent);
+        }
+
+        // Process steps staggered
+        document.querySelectorAll('.process-step').forEach((el, index) => {
+            el.classList.add('animate-on-scroll', 'animate-scale-in');
+            el.style.transitionDelay = `${index * 150}ms`;
+            revealObserver.observe(el);
+        });
+
+        // CTA wrapper
+        const ctaWrapper = document.querySelector('.cta-wrapper');
+        if (ctaWrapper) {
+            ctaWrapper.classList.add('animate-on-scroll', 'animate-bounce-in');
+            revealObserver.observe(ctaWrapper);
+        }
+
+        // Contact section
+        const contactInfo = document.querySelector('.contact-info');
+        const contactForm = document.querySelector('.contact-form-wrapper');
+        if (contactInfo) {
+            contactInfo.classList.add('animate-on-scroll', 'animate-fade-up');
+            revealObserver.observe(contactInfo);
+        }
+        if (contactForm) {
+            contactForm.classList.add('animate-on-scroll', 'animate-fade-up');
+            contactForm.style.transitionDelay = '200ms';
+            revealObserver.observe(contactForm);
+        }
+
+
+        // ============================================
+        // Hero Globe — Mouse Parallax (KEPT AS IS)
+        // ============================================
+        const globeStage = document.getElementById('globeStage');
+        if (globeStage) {
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+            const STRENGTH = 14; // max pixel shift
 
             document.addEventListener('mousemove', (e) => {
-                // Show cursor on first movement
-                if (cursor.style.display !== 'block') {
-                    cursor.style.display = 'block';
-                }
-                
-                // Smoothly move the custom cursor
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
+                const cx = window.innerWidth / 2;
+                const cy = window.innerHeight / 2;
+                targetX = ((e.clientX - cx) / cx) * STRENGTH;
+                targetY = ((e.clientY - cy) / cy) * STRENGTH;
+            });
 
-                // EYE TRACKING LOGIC
-                const eyes = document.querySelectorAll('.eye');
-                eyes.forEach(eye => {
-                    const pupil = eye.querySelector('.pupil');
-                    const eyeRect = eye.getBoundingClientRect();
-                    const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-                    const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+            (function animateParallax() {
+                currentX += (targetX - currentX) * 0.08;
+                currentY += (targetY - currentY) * 0.08;
+                globeStage.style.transform =
+                    `translate(${currentX}px, ${currentY}px)`;
+                requestAnimationFrame(animateParallax);
+            })();
 
-                    const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
-                    const distance = Math.min(eyeRect.width / 4, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 10);
-
-                    const pupilX = Math.cos(angle) * distance;
-                    const pupilY = Math.sin(angle) * distance;
-
-                    pupil.style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
+            // Hover bounce on orbit icons
+            document.querySelectorAll('.orbit-icon').forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    icon.style.animationPlayState = 'paused';
+                });
+                icon.addEventListener('mouseleave', () => {
+                    icon.style.animationPlayState = 'running';
                 });
             });
 
-            // Navbar Scroll Effect
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Mobile Menu Toggle
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-
-            if (menuBtn) {
-                menuBtn.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    const icon = menuBtn.querySelector('i');
-                    if (navLinks.classList.contains('active')) {
-                        icon.className = 'ph-bold ph-x';
-                    } else {
-                        icon.className = 'ph-bold ph-list';
-                    }
+            // Bounce on badge hover
+            document.querySelectorAll('.hero-badge').forEach(badge => {
+                badge.addEventListener('mouseenter', () => {
+                    badge.style.animationPlayState = 'paused';
                 });
-            }
-
-            // Close mobile menu on link click
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    const icon = menuBtn.querySelector('i');
-                    icon.className = 'ph-bold ph-list';
+                badge.addEventListener('mouseleave', () => {
+                    badge.style.animationPlayState = 'running';
                 });
             });
+        }
 
-            // Smooth Scrolling for service links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+    });
+</script>
 
-            // Active Link Highlighting
-            const sections = document.querySelectorAll('section[id]');
-            window.addEventListener('scroll', () => {
-                const scrollY = window.pageYOffset;
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100;
-                    const sectionId = current.getAttribute('id');
-                    const link = document.querySelector(`.nav-links a[href*=${sectionId}]`);
-
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        if (link) link.classList.add('active');
-                    } else {
-                        if (link) link.classList.remove('active');
-                    }
-                });
-            });
-
-            // Form Submission Handling
-            const contactForm = document.querySelector('.contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const btn = contactForm.querySelector('button');
-                    const originalText = btn.innerHTML;
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="ph-bold ph-circle-notch ph-spin"></i> Sending...';
-                    setTimeout(() => {
-                        alert('Thank you! Your message has been sent successfully. Our team will contact you shortly.');
-                        contactForm.reset();
-                        btn.disabled = false;
-                        btn.innerHTML = originalText;
-                    }, 2000);
-                });
-            }
-
-            // ============================================
-            // Scroll Animations (Premium Observer)
-            // ============================================
-
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, observerOptions);
-
-            // Apply to Services cards
-            document.querySelectorAll('.service-card').forEach((el, index) => {
-                el.classList.add('animate-on-scroll', 'animate-fade-up');
-                el.style.transitionDelay = `${(index % 3) * 150}ms`;
-                revealObserver.observe(el);
-            });
-
-            // Why Choose Us rows
-            document.querySelectorAll('.why-row').forEach((el, index) => {
-                el.classList.add('animate-on-scroll');
-                el.classList.add(index % 2 === 0 ? 'animate-slide-left' : 'animate-slide-right');
-                revealObserver.observe(el);
-            });
-
-            // About Section elements
-            const aboutVisual = document.querySelector('.about-visual');
-            const aboutContent = document.querySelector('.about-content');
-            if(aboutVisual) {
-                aboutVisual.classList.add('animate-on-scroll', 'animate-slide-left');
-                revealObserver.observe(aboutVisual);
-            }
-            if(aboutContent) {
-                aboutContent.classList.add('animate-on-scroll', 'animate-slide-right');
-                revealObserver.observe(aboutContent);
-            }
-
-            // Process steps staggered
-            document.querySelectorAll('.process-step').forEach((el, index) => {
-                el.classList.add('animate-on-scroll', 'animate-scale-in');
-                el.style.transitionDelay = `${index * 150}ms`;
-                revealObserver.observe(el);
-            });
-
-            // CTA wrapper
-            const ctaWrapper = document.querySelector('.cta-wrapper');
-            if(ctaWrapper) {
-                ctaWrapper.classList.add('animate-on-scroll', 'animate-bounce-in');
-                revealObserver.observe(ctaWrapper);
-            }
-
-            // Contact section
-            const contactInfo = document.querySelector('.contact-info');
-            const contactForm = document.querySelector('.contact-form-wrapper');
-            if(contactInfo) {
-                contactInfo.classList.add('animate-on-scroll', 'animate-fade-up');
-                revealObserver.observe(contactInfo);
-            }
-            if(contactForm) {
-                contactForm.classList.add('animate-on-scroll', 'animate-fade-up');
-                contactForm.style.transitionDelay = '200ms';
-                revealObserver.observe(contactForm);
-            }
-
-
-            // ============================================
-            // Hero Globe — Mouse Parallax (KEPT AS IS)
-            // ============================================
-            const globeStage = document.getElementById('globeStage');
-            if (globeStage) {
-                let targetX = 0, targetY = 0;
-                let currentX = 0, currentY = 0;
-                const STRENGTH = 14; // max pixel shift
-
-                document.addEventListener('mousemove', (e) => {
-                    const cx = window.innerWidth  / 2;
-                    const cy = window.innerHeight / 2;
-                    targetX = ((e.clientX - cx) / cx) * STRENGTH;
-                    targetY = ((e.clientY - cy) / cy) * STRENGTH;
-                });
-
-                (function animateParallax() {
-                    currentX += (targetX - currentX) * 0.08;
-                    currentY += (targetY - currentY) * 0.08;
-                    globeStage.style.transform =
-                        `translate(${currentX}px, ${currentY}px)`;
-                    requestAnimationFrame(animateParallax);
-                })();
-
-                // Hover bounce on orbit icons
-                document.querySelectorAll('.orbit-icon').forEach(icon => {
-                    icon.addEventListener('mouseenter', () => {
-                        icon.style.animationPlayState = 'paused';
-                    });
-                    icon.addEventListener('mouseleave', () => {
-                        icon.style.animationPlayState = 'running';
-                    });
-                });
-
-                // Bounce on badge hover
-                document.querySelectorAll('.hero-badge').forEach(badge => {
-                    badge.addEventListener('mouseenter', () => {
-                        badge.style.animationPlayState = 'paused';
-                    });
-                    badge.addEventListener('mouseleave', () => {
-                        badge.style.animationPlayState = 'running';
-                    });
-                });
-            }
-
+<!-- Eye Follow Animation (standalone — runs after full DOM is ready) -->
+<script>
+    document.querySelectorAll('.eye').length && window.addEventListener('mousemove', function (e) {
+        if (window.innerWidth < 768) return;
+        document.querySelectorAll('.eye').forEach(function (eye) {
+            var pupil = eye.querySelector('.pupil');
+            if (!pupil) return;
+            var r = eye.getBoundingClientRect();
+            var cx = r.left + r.width / 2;
+            var cy = r.top + r.height / 2;
+            var angle = Math.atan2(e.clientY - cy, e.clientX - cx);
+            var x = Math.cos(angle) * 6;
+            var y = Math.sin(angle) * 6;
+            // -50% centers the pupil, then we add the px offset
+            pupil.style.transform = 'translate(calc(-50% + ' + x + 'px), calc(-50% + ' + y + 'px))';
         });
-    </script>
-
-    <!-- Eye Follow Animation (standalone — runs after full DOM is ready) -->
-    <script>
-        document.querySelectorAll('.eye').length && window.addEventListener('mousemove', function(e) {
-            if (window.innerWidth < 768) return;
-            document.querySelectorAll('.eye').forEach(function(eye) {
-                var pupil = eye.querySelector('.pupil');
-                if (!pupil) return;
-                var r  = eye.getBoundingClientRect();
-                var cx = r.left + r.width  / 2;
-                var cy = r.top  + r.height / 2;
-                var angle = Math.atan2(e.clientY - cy, e.clientX - cx);
-                var x = Math.cos(angle) * 6;
-                var y = Math.sin(angle) * 6;
-                // -50% centers the pupil, then we add the px offset
-                pupil.style.transform = 'translate(calc(-50% + ' + x + 'px), calc(-50% + ' + y + 'px))';
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 
 </html>
