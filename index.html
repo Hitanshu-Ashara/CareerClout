@@ -1897,12 +1897,77 @@
             background-color: var(--color-white);
         }
 
+        .form-group input.error {
+            border-color: #DC2626 !important;
+            background-color: #FEF2F2 !important;
+        }
+
+        .phone-error-msg {
+            color: #DC2626;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.25rem;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: var(--shadow) !important;
+        }
+
         .form-footer-text {
             font-size: 0.85rem;
             color: #64748B;
             margin-top: 1rem;
             margin-bottom: 0;
             font-weight: 600;
+        }
+
+        /* ===== FORM STATUS MESSAGES ===== */
+        .form-status {
+            display: none;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: center;
+            border: var(--border-width) solid var(--color-border);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .form-status.success {
+            display: block;
+            background-color: #D1FAE5;
+            /* Light green */
+            color: #065F46;
+            /* Dark green */
+            border-color: #059669;
+            /* Medium green border */
+        }
+
+        .form-status.error {
+            display: block;
+            background-color: #FEE2E2;
+            /* Light red */
+            color: #991B1B;
+            /* Dark red */
+            border-color: #DC2626;
+            /* Medium red border */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== intl-tel-input CUSTOM STYLES ===== */
@@ -2467,7 +2532,7 @@
                 margin-bottom: 1rem;
             }
 
-            .footer-brand {
+            s .footer-brand {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -2542,15 +2607,13 @@
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M46.002 145.5L13.002 198" stroke="currentColor" stroke-width="26" stroke-linecap="round"
                         stroke-linejoin="round" />
-                    <path d="M77.002 96L105.335 136M107.835 75L136.168 115" stroke="currentColor" stroke-width="11"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M72.002 115L91.835 144M126.835 76L141.835 97" stroke="currentColor" stroke-width="11"
+                    <path d="M75.002 109L103.335 149M116.669 79L145.002 119" stroke="currentColor" stroke-width="13"
                         stroke-linecap="round" stroke-linejoin="round" />
                     <path
                         d="M151.502 79C151.502 44.206 123.296 16 88.502 16C53.708 16 25.502 44.206 25.502 79C25.502 113.794 53.708 142 88.502 142C123.296 142 151.502 113.794 151.502 79Z"
                         stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
                     <path
-                        d="M92.0186 65.3509L90.6554 66.3436L121.399 110.112C123.099 112.447 123.95 113.614 124.239 114.813C124.624 116.411 124.359 118.097 123.502 119.5C122.859 120.552 121.691 121.402 119.356 123.103C117.021 124.803 115.854 125.653 114.655 125.943C113.057 126.328 111.371 126.063 109.968 125.206C108.916 124.562 108.066 123.395 106.365 121.06L75.6219 77.2919L74.2588 78.2846C74.0402 82.0851 71.4311 93.9851 69.6489 92.9812C67.8668 91.9772 68.3455 88.8768 69.3032 82.6757L69.3032 82.6757L71.6804 67.2799C72.162 64.1612 72.4029 62.6018 73.5409 61.773C74.679 60.9442 76.2371 61.1935 79.3531 61.6923L94.7356 64.1544C100.931 65.1461 104.029 65.6419 104.438 67.6461C104.846 69.6503 102.237 71.5505 97.0186 75.3509Z"
+                        d="M97.0186 75.3509L95.6554 76.3436L126.399 120.112C128.099 122.447 128.95 123.614 129.239 124.813C129.624 126.411 129.359 128.097 128.502 129.5C127.859 130.552 126.691 131.402 124.356 133.103C122.021 134.803 120.854 135.653 119.655 135.943C118.057 136.328 116.371 136.063 114.968 135.206C113.916 134.562 113.066 133.395 111.365 131.06L80.6219 87.2919L79.2588 88.2846C74.0402 92.0851 71.4311 93.9851 69.6489 92.9812C67.8668 91.9772 68.3455 88.8768 69.3032 82.6757L69.3032 82.6757L71.6804 67.2799C72.162 64.1612 72.4029 62.6018 73.5409 61.773C74.679 60.9442 76.2371 61.1935 79.3531 61.6923L94.7356 64.1544C100.931 65.1461 104.029 65.6419 104.438 67.6461C104.846 69.6503 102.237 71.5505 97.0186 75.3509Z"
                         fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
@@ -2896,23 +2959,25 @@
                     <form class="contact-form box-shadow" id="contactForm">
                         <div class="form-group">
                             <label for="form-name">Full Name <span class="text-primary">*</span></label>
-                            <input type="text" id="form-name" placeholder="John Doe" required>
+                            <input type="text" id="form-name" name="name" placeholder="John Doe" required>
                         </div>
 
                         <!-- PHONE FIELD WITH COUNTRY CODE -->
                         <div class="form-group">
                             <label for="form-phone">Phone Number <span class="text-primary">*</span></label>
-                            <input type="tel" id="form-phone" placeholder="Enter your phone number" required>
+                            <input type="tel" id="form-phone" name="phone" inputmode="numeric"
+                                placeholder="Enter your phone number" required>
+                            <div id="phone-error" class="phone-error-msg"></div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="form-email">Email Address</label>
-                                <input type="email" id="form-email" placeholder="john@example.com">
+                                <label for="form-email">Email Address <span class="text-primary">*</span></label>
+                                <input type="email" id="form-email" name="email" placeholder="john@example.com" required>
                             </div>
                             <div class="form-group">
-                                <label for="form-service">Service Type</label>
-                                <select id="form-service"
+                                <label for="form-service">Service Type <span class="text-primary">*</span></label>
+                                <select id="form-service" name="service" required
                                     style="appearance:auto; background-image:none; padding-right:1rem;">
                                     <option value="" disabled selected>Select an option</option>
                                     <option value="Student Visa">Student Visa</option>
@@ -2925,8 +2990,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="form-country">Preferred Country</label>
-                            <select id="form-country"
+                            <label for="form-country">Preferred Country <span class="text-primary">*</span></label>
+                            <select id="form-country" name="country" required
                                 style="appearance:auto; background-image:none; padding-right:1rem;">
                                 <option value="" disabled selected>Select a country</option>
                                 <option value="Spain">Spain</option>
@@ -2944,12 +3009,14 @@
 
                         <div class="form-group">
                             <label for="form-message">Your Background & Goals</label>
-                            <textarea id="form-message" placeholder="Please provide brief details..."></textarea>
+                            <textarea id="form-message" name="message"
+                                placeholder="Please provide brief details..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-xl btn-pill w-100 box-shadow btn-bounce mt-3">
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-xl btn-pill w-100 box-shadow btn-bounce mt-3" disabled>
                             Book My Consultation
                         </button>
+                        <div id="formStatus" class="form-status"></div>
                         <p class="form-footer-text text-center">
                             <i class="ph-bold ph-clock"></i> We'll contact you within 24 hours.
                         </p>
@@ -2969,15 +3036,13 @@
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M46.002 145.5L13.002 198" stroke="currentColor" stroke-width="26"
                             stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M77.002 96L105.335 136M107.835 75L136.168 115" stroke="currentColor" stroke-width="11"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M72.002 115L91.835 144M126.835 76L141.835 97" stroke="currentColor" stroke-width="11"
+                        <path d="M75.002 109L103.335 149M116.669 79L145.002 119" stroke="currentColor" stroke-width="13"
                             stroke-linecap="round" stroke-linejoin="round" />
                         <path
                             d="M151.502 79C151.502 44.206 123.296 16 88.502 16C53.708 16 25.502 44.206 25.502 79C25.502 113.794 53.708 142 88.502 142C123.296 142 151.502 113.794 151.502 79Z"
                             stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
                         <path
-                            d="M92.0186 65.3509L90.6554 66.3436L121.399 110.112C123.099 112.447 123.95 113.614 124.239 114.813C124.624 116.411 124.359 118.097 123.502 119.5C122.859 120.552 121.691 121.402 119.356 123.103C117.021 124.803 115.854 125.653 114.655 125.943C113.057 126.328 111.371 126.063 109.968 125.206C108.916 124.562 108.066 123.395 106.365 121.06L75.6219 77.2919L74.2588 78.2846C74.0402 82.0851 71.4311 93.9851 69.6489 92.9812C67.8668 91.9772 68.3455 88.8768 69.3032 82.6757L69.3032 82.6757L71.6804 67.2799C72.162 64.1612 72.4029 62.6018 73.5409 61.773C74.679 60.9442 76.2371 61.1935 79.3531 61.6923L94.7356 64.1544C100.931 65.1461 104.029 65.6419 104.438 67.6461C104.846 69.6503 102.237 71.5505 97.0186 75.3509Z"
+                            d="M97.0186 75.3509L95.6554 76.3436L126.399 120.112C128.099 122.447 128.95 123.614 129.239 124.813C129.624 126.411 129.359 128.097 128.502 129.5C127.859 130.552 126.691 131.402 124.356 133.103C122.021 134.803 120.854 135.653 119.655 135.943C118.057 136.328 116.371 136.063 114.968 135.206C113.916 134.562 113.066 133.395 111.365 131.06L80.6219 87.2919L79.2588 88.2846C74.0402 92.0851 71.4311 93.9851 69.6489 92.9812C67.8668 91.9772 68.3455 88.8768 69.3032 82.6757L69.3032 82.6757L71.6804 67.2799C72.162 64.1612 72.4029 62.6018 73.5409 61.773C74.679 60.9442 76.2371 61.1935 79.3531 61.6923L94.7356 64.1544C100.931 65.1461 104.029 65.6419 104.438 67.6461C104.846 69.6503 102.237 71.5505 97.0186 75.3509Z"
                             fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
@@ -3126,25 +3191,6 @@
                 if (el) { el.classList.add('animate-on-scroll', 'animate-fade-up'); el.style.transitionDelay = i * 200 + 'ms'; revealObserver.observe(el); }
             });
 
-            // ===== FORM SUBMISSION =====
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    const fullPhone = window._iti ? window._iti.getNumber() : document.getElementById('form-phone').value;
-                    console.log('Full phone number:', fullPhone);
-                    const btn = contactForm.querySelector('button[type="submit"]');
-                    const originalText = btn.innerHTML;
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="ph-bold ph-circle-notch"></i> Sending...';
-                    setTimeout(function () {
-                        alert('Thank you! Your message has been sent. Our team will contact you within 24 hours.');
-                        contactForm.reset();
-                        btn.disabled = false;
-                        btn.innerHTML = originalText;
-                    }, 2000);
-                });
-            }
 
         });
 
@@ -3171,14 +3217,146 @@
                 preferredCountries: ['in', 'gb', 'us', 'ca', 'au', 'de', 'es'],
                 utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.3/build/js/utils.js'
             });
+        });
 
-            // Prevent text entry (Numbers only)
-            phoneInput.addEventListener('input', function() {
-                this.value = this.value.replace(/[^0-9]/g, '');
+    </script>
+    <script>
+        const form = document.getElementById("contactForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const statusMsg = document.getElementById('formStatus');
+        const phoneInput = document.getElementById('form-phone');
+        const phoneError = document.getElementById('phone-error');
+        const requiredInputs = form.querySelectorAll('[required]');
+
+        // Only allow numbers and plus sign (if they type it) in phone input
+        phoneInput.addEventListener('keypress', function(e) {
+            // allows 0-9, plus (+), minus (-), spaces, but intl-tel-input handles format.
+            // Strict numeric:
+            if (!/[0-9]/.test(e.key)) {
+                e.preventDefault();
+            }
+        });
+
+        // Smart Form Validation
+        function checkFormValidity() {
+            let isValid = true;
+
+            // Check standard HTML5 validation for all required fields
+            requiredInputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    isValid = false;
+                }
             });
+
+            // Check specific phone validation
+            if (window._iti && phoneInput.value.trim() !== '') {
+                if (!window._iti.isValidNumber()) {
+                    isValid = false;
+                    phoneInput.classList.add('error');
+                    phoneError.style.display = 'block';
+                    phoneError.textContent = "Please enter a valid phone number for the selected country.";
+                } else {
+                    phoneInput.classList.remove('error');
+                    phoneError.style.display = 'none';
+                }
+            } else if (phoneInput.value.trim() === '') {
+                phoneInput.classList.remove('error');
+                phoneError.style.display = 'none';
+                isValid = false;
+            }
+
+            // Update button state
+            if (isValid) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Book My Consultation';
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Book My Consultation';
+                submitBtn.style.opacity = '0.6';
+                submitBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        // Attach listeners to all inputs to check validity on change/type
+        form.addEventListener('input', checkFormValidity);
+        
+        // Ensure intl-tel-input events also trigger validation
+        phoneInput.addEventListener('countrychange', checkFormValidity);
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Clear previous messages
+            statusMsg.className = 'form-status';
+            statusMsg.style.display = 'none';
+
+            // UX Improvement: Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="ph-bold ph-spinner ph-spin" style="animation: spin 1s linear infinite;"></i> Submitting...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
+
+            // Add keyframes for the spinner dynamically if not present
+            if (!document.getElementById('spinner-style')) {
+                const style = document.createElement('style');
+                style.id = 'spinner-style';
+                style.innerHTML = '@keyframes spin { 100% { transform: rotate(360deg); } }';
+                document.head.appendChild(style);
+            }
+
+            // Get the FULL phone number with country code using the intl-tel-input instance
+            const fullPhoneNumber = window._iti ? window._iti.getNumber() : form.phone.value;
+
+            const data = {
+                name: form.name.value,
+                phone: fullPhoneNumber,
+                email: form.email.value,
+                service: form.service.value,
+                country: form.country.value,
+                message: form.message.value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Fix: We send as plain text to avoid CORS preflight (OPTIONS) error
+            fetch("https://script.google.com/macros/s/AKfycbyP6_oK4EkVuahjsvOL9ZVyKfIFp2BHUYtR_NNTB0dMzm6_uNacmGlI7SyiWE2hWIhN6Q/exec", {
+                method: "POST",
+                mode: "no-cors", // Crucial for Google Apps Script redirects
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
+                body: JSON.stringify(data)
+            })
+                .then(() => {
+                    // With mode: 'no-cors', we assume success if no error is caught
+                    statusMsg.textContent = "✅ Inquiry submitted successfully. We will contact you soon.";
+                    statusMsg.className = 'form-status success';
+                    form.reset();
+                    if (window._iti) window._iti.setCountry('in'); // Reset to default country
+
+                    // Auto-hide the success message after 5 seconds
+                    setTimeout(() => {
+                        statusMsg.style.display = 'none';
+                    }, 5000);
+
+                    // Button success state
+                    submitBtn.innerHTML = '✅ Submitted';
+                    submitBtn.disabled = true; // Keep disabled until they type again
+                })
+                .catch(err => {
+                    statusMsg.textContent = "❌ Something went wrong. Please try again.";
+                    statusMsg.className = 'form-status error';
+                    console.error("Submission Error:", err);
+                    
+                    // Button error state
+                    submitBtn.innerHTML = '❌ Try Again';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.cursor = 'pointer';
+                });
         });
     </script>
-
 </body>
 
 </html>
